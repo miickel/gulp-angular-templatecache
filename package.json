@@ -1,0 +1,37 @@
+{
+    "name": "gulp-angular-templatecache",
+    "version": "0.1.0",
+    "description": "Converts HTML templates into Angular module(s) which includes them in Angular's $templateCache.",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "repository": {
+        "url": "miickel/gulp-angular-templatecache"
+    },
+    "files": [
+        "index.js"
+    ],
+    "keywords": [
+        "gulpplugin",
+        "gulp",
+        "angular",
+        "angularjs",
+        "templatecache"
+    ],
+    "author": {
+        "name": "Mickel",
+        "email": "andersson.mickel@gmail.com",
+        "url": "http://mickel.me"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "event-stream": "~3.0.20",
+        "path": "~0.4.9",
+        "gulp-util": "~2.2.5",
+        "js-string-escape": "~1.0.0"
+    },
+    "devDependencies": {
+        "mocha": "~1.16.2"
+    }
+}

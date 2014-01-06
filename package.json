@@ -9,6 +9,9 @@
     "repository": {
         "url": "miickel/gulp-angular-templatecache"
     },
+    "engines": {
+        "node": ">=0.8.0"
+    },
     "files": [
         "index.js"
     ],

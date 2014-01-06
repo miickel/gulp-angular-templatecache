@@ -1,4 +1,4 @@
-# [gulp](https://github.com/wearefractal/gulp)-styl [![Build Status](https://secure.travis-ci.org/miickel/gulp-angular-templatecache.png?branch=master)](http://travis-ci.org/miickel/gulp-angular-templatecache)
+# [gulp](https://github.com/wearefractal/gulp)-angular-templatecache [![Build Status](https://secure.travis-ci.org/miickel/gulp-angular-templatecache.png?branch=master)](http://travis-ci.org/miickel/gulp-angular-templatecache)
 
 > Concatenates and registers AngularJS templates in the $templateCache.
 

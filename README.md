@@ -41,7 +41,7 @@ angular.module("templates", []).run([$templateCache,
 ]);
 
 ```
-You can then include only the templates.js-file and AngularJS will load and cache them all in only one request. Profit!
+You can now include only the templates.js-file and AngularJS will load and cache all your templates at ounce, using only one request. Profit!
 
 ## API
 

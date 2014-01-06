@@ -1,14 +1,12 @@
 {
     "name": "gulp-angular-templatecache",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "description": "Converts HTML templates into Angular module(s) which includes them in Angular's $templateCache.",
     "main": "index.js",
     "scripts": {
         "test": "mocha"
     },
-    "repository": {
-        "url": "miickel/gulp-angular-templatecache"
-    },
+    "repository": "miickel/gulp-angular-templatecache",
     "engines": {
         "node": ">=0.8.0"
     },

@@ -64,3 +64,5 @@ Sets the root used in output (e.g. $templateCache.put(path.join(root, filepath))
 ## License
 
 MIT © [Mickel](http://mickel.me)
+
+[![Analytics](https://ga-beacon.appspot.com/UA-46880034-1/gulp-angular-templatecache/readme?pixel)](https://github.com/igrigorik/ga-beacon)

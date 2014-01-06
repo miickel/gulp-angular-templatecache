@@ -8,7 +8,7 @@ it('should build valid $templateCache from two html-files', function(cb) {
 	stream.on('data', function(file) {
 		assert.equal(file.path, '~/dev/projects/gulp-angular-templatecache/test/templates.js');
 		assert.equal(file.relative, 'templates.js');
-		assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run([$templateCache, function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");$templateCache.put("/template-b.html","<h1 id=\\"template-b\\">I\\\'m template B!</h1>");}]);');
+		assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");$templateCache.put("/template-b.html","<h1 id=\\"template-b\\">I\\\'m template B!</h1>");}]);');
 		cb();
 	});
 

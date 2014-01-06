@@ -8,9 +8,8 @@ module.exports = function(filename, options) {
 	if (!filename) {
 		throw new PluginError('gulp-concat', 'Missing filename option for gulp-angular-templatecache');
 	}
-	if (!options) {
-		options = {};
-	}
+	options = options || {};
+	options.root = options.root || '';
 
 	var buffer = [];
 	var firstFile;
@@ -34,10 +33,10 @@ module.exports = function(filename, options) {
 			return this.emit('end');
 		}
 
-		var result = 'angular.module("templates", []).run([$templateCache, function($templateCache) {';
+		var result = 'angular.module("templates", []).run(["$templateCache", function($templateCache) {';
 
 		result += buffer.map(function(file) {
-			var url = file.path.replace(file.base, '');
+			var url = path.join(options.root, file.path.replace(file.base, ''));
 			var template = '$templateCache.put("' + url + '","';
 			template += htmlJsStr(file.contents);
 			template += '");';

@@ -45,9 +45,21 @@ You can then include only the templates.js-file and AngularJS will load and cach
 
 ## API
 
-### gulp-angular-templatecache(filename)
+### gulp-angular-templatecache(filename, options)
 
-filename (required) - Name of the JavaScript file gulp should write to.
+#### filename
+
+Type: `String`  
+Required: `true`
+
+Name of the JavaScript file gulp should write to.
+
+#### options.root
+
+Type: `String`  
+Default: `''`
+
+Sets the root used in output (e.g. $templateCache.put(path.join(root, filepath))...)
 
 ## License
 

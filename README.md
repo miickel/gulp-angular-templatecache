@@ -41,7 +41,7 @@ angular.module("templates", []).run([$templateCache,
 ]);
 
 ```
-You can now include only the templates.js-file and AngularJS will load and cache all your templates at ounce, using only one request. Profit!
+You can now include the generated .js-file and AngularJS will load and cache all your templates at once, using only one request. Profit!
 
 ## API
 
@@ -60,6 +60,13 @@ Type: `String`
 Default: `''`
 
 Sets the root used in output (e.g. $templateCache.put(path.join(root, filepath))...)
+
+#### options.module
+
+Type: `String`  
+Default: `templates`
+
+Sets the name of the Angular module used in output.
 
 ## License
 

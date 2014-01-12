@@ -10,6 +10,7 @@ module.exports = function(filename, options) {
 	}
 	options = options || {};
 	options.root = options.root || '';
+	options.module = options.module || 'templates';
 
 	var buffer = [];
 	var firstFile;
@@ -33,7 +34,7 @@ module.exports = function(filename, options) {
 			return this.emit('end');
 		}
 
-		var result = 'angular.module("templates", []).run(["$templateCache", function($templateCache) {';
+		var result = 'angular.module("' + options.module + '", []).run(["$templateCache", function($templateCache) {';
 
 		result += buffer.map(function(file) {
 			var url = path.join(options.root, file.path.replace(file.base, ''));

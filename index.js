@@ -25,21 +25,23 @@ module.exports = function(filename, options) {
 		buffer.push(file);
 	}
 
+	function templateCache(file) {
+		var template = '$templateCache.put("<%= url %>","<%= contents %>");';
+
+		return gutil.template(template, {
+			url: path.join(options.root, file.path.replace(file.base, '')),
+			contents: htmlJsStr(file.contents),
+			file: file
+		});
+	}
+
 	function endStream() {
 		if (buffer.length === 0) {
 			return this.emit('end');
 		}
 
 		var result = 'angular.module("' + options.module + '", []).run(["$templateCache", function($templateCache) {';
-
-		result += buffer.map(function(file) {
-			var url = path.join(options.root, file.path.replace(file.base, ''));
-			var template = '$templateCache.put("' + url + '","';
-			template += htmlJsStr(file.contents);
-			template += '");';
-			return template;
-		}).join('');
-
+		result += buffer.map(templateCache).join('');
 		result += '}]);';
 
 		var resultPath = path.join(buffer[0].base, filename);

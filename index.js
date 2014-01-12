@@ -12,7 +12,6 @@ module.exports = function(filename, options) {
 	options.root = options.root || '';
 
 	var buffer = [];
-	var firstFile;
 
 	function bufferFiles(file) {
 		if (file.isNull()) {
@@ -20,9 +19,6 @@ module.exports = function(filename, options) {
 		}
 		if (file.isStream()) {
 			return this.emit('error', new PluginError('gulp-angular-templatecache', 'Streaming not supported'));
-		}
-		if (!firstFile) {
-			firstFile = file;
 		}
 
 		buffer.push(file);
@@ -45,7 +41,7 @@ module.exports = function(filename, options) {
 
 		result += '}]);';
 
-		var resultPath = path.join(firstFile.base, filename);
+		var resultPath = path.join(buffer[0].base, filename);
 
 		var templatesFile = new gutil.File({
 			cwd: buffer[0].cwd,

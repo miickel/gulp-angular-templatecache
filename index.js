@@ -6,7 +6,7 @@ var htmlJsStr = require('js-string-escape');
 
 module.exports = function(filename, options) {
 	if (!filename) {
-		throw new PluginError('gulp-concat', 'Missing filename option for gulp-angular-templatecache');
+		throw new PluginError('gulp-angular-templatecache', 'Missing filename option for gulp-angular-templatecache');
 	}
 	options = options || {};
 	options.root = options.root || '';

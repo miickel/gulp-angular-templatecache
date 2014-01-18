@@ -27,8 +27,8 @@ module.exports = function(filename, options) {
 	}
 	options = options || {};
 
-	var templateHeader = "angular.module('<%= module %>').run(['$templateCache', function($templateCache) {\n";
-	var templateFooter = "}]);\n"
+	var templateHeader = 'angular.module("<%= module %>", []).run(["$templateCache", function($templateCache) {';
+	var templateFooter = '}]);'
 
 	return es.pipeline(
 		templateCache(options.root || ''),

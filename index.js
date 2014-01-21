@@ -32,14 +32,15 @@ module.exports = function(filename, options) {
 	}
 	options = options || {};
 
-	var templateHeader = 'angular.module("<%= module %>", []).run(["$templateCache", function($templateCache) {';
+	var templateHeader = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
 	var templateFooter = '}]);'
 
 	return es.pipeline(
 		templateCache(options.root || ''),
 		concat(filename),
 		header(templateHeader, {
-			module: options.module || 'templates'
+			module: options.module || 'templates',
+			standalone: options.standalone ? ', []' : ''
 		}),
 		footer(templateFooter)
 	)

@@ -10,9 +10,14 @@ var htmlJsStr = require('js-string-escape');
 function templateCache(root) {
 	return es.map(function(file, cb) {
 		var template = '$templateCache.put("<%= url %>","<%= contents %>");';
+		var url = path.join(root, file.path.replace(file.base, ''));
+
+		if (process.platform === 'win32') {
+			url = url.replace(/\\/g, '/');
+		}
 
 		file.contents = new Buffer(gutil.template(template, {
-			url: path.join(root, file.path.replace(file.base, '')),
+			url: url,
 			contents: htmlJsStr(file.contents),
 			file: file
 		}));

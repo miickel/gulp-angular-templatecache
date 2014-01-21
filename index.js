@@ -27,10 +27,13 @@ function templateCache(root) {
 }
 
 module.exports = function(filename, options) {
-	if (!filename) {
-		throw new PluginError('gulp-angular-templatecache', 'Missing filename option for gulp-angular-templatecache');
+	if (typeof filename === 'string') {
+		options = options || {};
+	} else {
+		// filename is not a string, so it's either undefined or our options
+		options = filename || {};
+		filename = 'templates.js';
 	}
-	options = options || {};
 
 	var templateHeader = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
 	var templateFooter = '}]);'

@@ -1,6 +1,6 @@
 var assert = require('assert');
 var gutil = require('gulp-util');
-var templateCache = require('./index');
+var templateCache = require('../index');
 
 it('should build valid $templateCache from two html-files', function(cb) {
 	var stream = templateCache('templates.js');

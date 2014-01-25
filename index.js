@@ -4,7 +4,6 @@ var gutil = require('gulp-util');
 var concat = require('gulp-concat');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
-var PluginError = gutil.PluginError;
 var htmlJsStr = require('js-string-escape');
 
 function templateCache(root) {
@@ -30,13 +29,12 @@ module.exports = function(filename, options) {
 	if (typeof filename === 'string') {
 		options = options || {};
 	} else {
-		// filename is not a string, so it's either undefined or our options
 		options = filename || {};
 		filename = 'templates.js';
 	}
 
 	var templateHeader = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
-	var templateFooter = '}]);'
+	var templateFooter = '}]);';
 
 	return es.pipeline(
 		templateCache(options.root || ''),
@@ -46,5 +44,5 @@ module.exports = function(filename, options) {
 			standalone: options.standalone ? ', []' : ''
 		}),
 		footer(templateFooter)
-	)
+	);
 };

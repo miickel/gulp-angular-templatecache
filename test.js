@@ -68,3 +68,43 @@ it('should be able to create standalone module', function(cb) {
 
 	stream.end();
 });
+
+it('defaults to templates.js if no filename is specified', function(cb) {
+	var stream = templateCache();
+
+	stream.on('data', function(file) {
+		assert.equal(file.path, '~/dev/projects/gulp-angular-templatecache/test/templates.js');
+		assert.equal(file.relative, 'templates.js');
+		cb();
+	});
+
+	stream.write(new gutil.File({
+		base: '~/dev/projects/gulp-angular-templatecache/test',
+		path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+		contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+	}));
+
+	stream.end();
+});
+
+it('can specify options as first parameter when no filename is specified', function(cb) {
+	var stream = templateCache({
+		standalone: true,
+		root: '/views'
+	});
+
+	stream.on('data', function(file) {
+		assert.equal(file.path, '~/dev/projects/gulp-angular-templatecache/test/templates.js');
+		assert.equal(file.relative, 'templates.js');
+		assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+		cb();
+	});
+
+	stream.write(new gutil.File({
+		base: '~/dev/projects/gulp-angular-templatecache/test',
+		path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+		contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+	}));
+
+	stream.end();
+});

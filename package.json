@@ -27,15 +27,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "event-stream": "~3.0.20",
-    "path": "~0.4.9",
-    "gulp-util": "~2.2.5",
+    "event-stream": "3.x",
+    "path": "0.x",
+    "gulp-util": "2.x",
     "js-string-escape": "~1.0.0",
-    "gulp-footer": "~1.0.3",
-    "gulp-header": "~1.0.2",
-    "gulp-concat": "~2.1.7"
+    "gulp-footer": "1.x",
+    "gulp-header": "1.x",
+    "gulp-concat": "2.x"
   },
   "devDependencies": {
-    "mocha": "~1.16.2"
+    "mocha": "latest"
   }
 }

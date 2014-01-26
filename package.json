@@ -1,41 +1,41 @@
 {
-    "name": "gulp-angular-templatecache",
-    "version": "1.0.0",
-    "description": "Concatenates and registers AngularJS templates in the $templateCache.",
-    "main": "index.js",
-    "scripts": {
-        "test": "mocha"
-    },
-    "repository": "miickel/gulp-angular-templatecache",
-    "engines": {
-        "node": ">=0.8.0"
-    },
-    "files": [
-        "index.js"
-    ],
-    "keywords": [
-        "gulpplugin",
-        "gulp",
-        "angular",
-        "angularjs",
-        "templatecache"
-    ],
-    "author": {
-        "name": "Mickel",
-        "email": "andersson.mickel@gmail.com",
-        "url": "http://mickel.me"
-    },
-    "license": "MIT",
-    "dependencies": {
-        "event-stream": "~3.0.20",
-        "path": "~0.4.9",
-        "gulp-util": "~2.2.5",
-        "js-string-escape": "~1.0.0",
-        "gulp-footer": "~1.0.3",
-        "gulp-header": "~1.0.2",
-        "gulp-concat": "~2.1.7"
-    },
-    "devDependencies": {
-        "mocha": "~1.16.2"
-    }
+  "name": "gulp-angular-templatecache",
+  "version": "1.0.1",
+  "description": "Concatenates and registers AngularJS templates in the $templateCache.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": "miickel/gulp-angular-templatecache",
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "gulp",
+    "angular",
+    "angularjs",
+    "templatecache"
+  ],
+  "author": {
+    "name": "Mickel",
+    "email": "andersson.mickel@gmail.com",
+    "url": "http://mickel.me"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "event-stream": "~3.0.20",
+    "path": "~0.4.9",
+    "gulp-util": "~2.2.5",
+    "js-string-escape": "~1.0.0",
+    "gulp-footer": "~1.0.3",
+    "gulp-header": "~1.0.2",
+    "gulp-concat": "~2.1.7"
+  },
+  "devDependencies": {
+    "mocha": "~1.16.2"
+  }
 }

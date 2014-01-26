@@ -56,7 +56,7 @@ gulp-angular-templatecache([filename](#filename), [options](#options))
 
 ---- 
 
-### filename (String)
+### filename
 
 > Name to use when concatinating.
 

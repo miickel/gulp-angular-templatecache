@@ -2,6 +2,11 @@
 
 > Concatenates and registers AngularJS templates in the `$templateCache`.
 
+----
+
+[Install](#install) | [How to Use](#example) | [API & Options](#api) | [License](#license)
+
+----
 
 ## Install
 

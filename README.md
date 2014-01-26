@@ -1,8 +1,6 @@
-# [gulp](https://github.com/wearefractal/gulp)-angular-templatecache [![Build Status](https://secure.travis-ci.org/miickel/gulp-angular-templatecache.png?branch=master)](http://travis-ci.org/miickel/gulp-angular-templatecache)
+# gulp-angular-templatecache [![Build Status](https://secure.travis-ci.org/miickel/gulp-angular-templatecache.png?branch=master)](http://travis-ci.org/miickel/gulp-angular-templatecache)
 
-> Concatenates and registers AngularJS templates in the $templateCache.
-
-*For more information about why this could be useful, please refer to this [introduction to $templateCache](http://www.thinkster.io/pick/puguRrgU4O/angularjs-templatecache).*
+> Concatenates and registers AngularJS templates in the `$templateCache`.
 
 
 ## Install
@@ -16,57 +14,103 @@ npm install gulp-angular-templatecache --save-dev
 
 ## Example
 
+**gulpfile.js**
+
+> Concatinate the contents of all .html-files in the templates directory and save to _public/templates.js_ (default filename).
+
 ```js
-var gulp = require('gulp');
-var templates = require('gulp-angular-templatecache');
+var templateCache = require('gulp-angular-templatecache');
 
 gulp.task('default', function () {
 	gulp.src('templates/**/*.html')
-		.pipe(templates('templates.js'))
-		.pipe(gulp.dest('public/templates'));
+		.pipe(templateCache())
+		.pipe(gulp.dest('public'));
 });
 ```
 
-This concatenates all .html-files in the templates directory and outputs a JavaScript file (templates.js in this case).
+**Result (_public/templates.js_)**
 
-The plugin produces spaghetti similar to the lines below.
+> Sample output (prettified).
 
 ```js
-angular.module("templates", []).run([$templateCache,
+angular.module("templates").run([$templateCache,
   function($templateCache) {
-    $templateCache.put("404.html", "<h2>Watthaphuck?!</h2><div class=\"alert alert-danger\"><p>The page you are looking for does not exist. Classic 404, homie!</p></div><img src=\"http://www.reactiongifs.com/wp-content/uploads/2013/10/tom-delonge-wtf1.gif\" class=\"img-responsive\"/>");
-    
-    // ... and the rest of your templates in a similar fashion
+	$templateCache.put("template1.html",
+		// template1.html content (escaped)
+	);
+	$templateCache.put("template2.html",
+		// template2.html content (escaped)
+	);
+	// etc.
   }
 ]);
 
 ```
-You can now include the generated .js-file and AngularJS will load and cache all your templates at once, using only one request. Profit!
+
+Include this file in your app and AngularJS will use the $templateCache when available.
+
 
 ## API
 
-### gulp-angular-templatecache(filename, options)
+gulp-angular-templatecache([filename](#filename), [options](#options))
 
-#### filename
+---- 
 
-Type: `String`  
-Required: `true`
+### filename (String)
 
-Name of the JavaScript file gulp should write to.
+> Name to use when concatinating.
 
-#### options.root
+Default: `templates.js`
 
-Type: `String`  
+----
+
+### options
+
+#### root (String)
+
+> Prefix for template URLs.
+
 Default: `''`
 
-Sets the root used in output (e.g. $templateCache.put(path.join(root, filepath))...)
+#### module (String)
 
-#### options.module
+> Name of AngularJS module.
 
-Type: `String`  
 Default: `templates`
 
-Sets the name of the Angular module used in output.
+#### standalone (Boolean)
+
+> Create a new AngularJS module, instead of using an existing.
+
+Default: `false`
+
+
+## Changes
+
+> This plugin uses Semantic Versioning 2.0.0
+
+### 1.0.0
+
+> Cleaner code, more tests and improved documentation. Thoroughly used in development.
+
+- adds
+	- `options.standalone` (**breaking**)
+- fixes
+	- Windows support
+- changes
+	- `filename` now optional
+
+### 0.3.0
+
+- adds
+	- `options.module`
+
+### 0.2.0 and earlier
+
+> Only used by mad men
+
+![](http://media3.giphy.com/media/bAplZhiLAsNnG/giphy.gif)
+
 
 ## License
 

@@ -4,7 +4,12 @@
 
 ----
 
-[Install](#install) | [How to Use](#example) | [API & Options](#api) | [License](#license)
+<p align="center">
+<a href="#install">Install</a> |
+<a href="#example">How to Use</a> |
+<a href="#api">API</a> |
+<a href="#license">License</a>
+</p>
 
 ----
 

@@ -3,16 +3,12 @@
 > Concatenates and registers AngularJS templates in the `$templateCache`.
 
 ----
-
-<p align="center">
 <a href="#install">Install</a> |
 <a href="#example">Example</a> |
 <a href="#api">API</a> |
 <a href="#changes">Changes</a> |
 <a href="#license">License</a>
-</p>
 
-----
 
 ## Install
 

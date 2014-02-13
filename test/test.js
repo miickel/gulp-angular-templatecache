@@ -108,3 +108,26 @@ it('can specify options as first parameter when no filename is specified', funct
 
 	stream.end();
 });
+
+it('can specify options as first parameter and with filename in it', function(cb) {
+	var stream = templateCache({
+		standalone: true,
+		root: '/views',
+		filename: 'foobar.js'
+	});
+
+	stream.on('data', function(file) {
+		assert.equal(file.path, '~/dev/projects/gulp-angular-templatecache/test/foobar.js');
+		assert.equal(file.relative, 'foobar.js');
+		assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+		cb();
+	});
+
+	stream.write(new gutil.File({
+		base: '~/dev/projects/gulp-angular-templatecache/test',
+		path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+		contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+	}));
+
+	stream.end();
+});

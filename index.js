@@ -30,7 +30,7 @@ module.exports = function(filename, options) {
 		options = options || {};
 	} else {
 		options = filename || {};
-		filename = 'templates.js';
+		filename = options.filename || 'templates.js';
 	}
 
 	var templateHeader = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';

@@ -8,7 +8,7 @@
 <a href="#install">Install</a> |
 <a href="#example">Example</a> |
 <a href="#api">API</a> |
-<a href="#changes">Changes</a> |
+[Releases](https://github.com/miickel/gulp-angular-templatecache/releases) |
 <a href="#license">License</a>
 
 

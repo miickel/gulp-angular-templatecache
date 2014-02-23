@@ -93,10 +93,20 @@ Default: `templates`
 
 Default: `false`
 
+#### base (String)
+
+> Allows you to override file base path.
+
+Default: file.base (file path of the current file being processed)
+
 
 ## Changes
 
 > This plugin uses Semantic Versioning 2.0.0
+
+### 1.1.0 and newer
+
+See [Releases](https://github.com/miickel/gulp-angular-templatecache/releases)
 
 ### 1.0.0
 

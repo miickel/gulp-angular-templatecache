@@ -153,4 +153,26 @@ it('can override file base path in options', function(cb) {
   }));
 
   stream.end();
+})
+it('can override relative file base path in options', function(cb) {
+  var stream = templateCache({
+    standalone: true,
+    root: '/views',
+    base: 'test'
+  });
+
+  stream.on('data', function(file) {
+    assert.equal(file.path, '~/dev/projects/gulp-angular-templatecache/templates.js');
+    assert.equal(file.relative, 'templates.js');
+    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+    cb();
+  });
+
+  stream.write(new gutil.File({
+    base: '~/dev/projects/gulp-angular-templatecache/',
+    path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+    contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+  }));
+
+  stream.end();
 });

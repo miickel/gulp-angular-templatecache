@@ -1,6 +1,6 @@
 {
   "name": "gulp-angular-templatecache",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Concatenates and registers AngularJS templates in the $templateCache.",
   "main": "index.js",
   "scripts": {

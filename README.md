@@ -63,7 +63,7 @@ Include this file in your app and AngularJS will use the $templateCache when ava
 
 gulp-angular-templatecache([filename](#filename), [options](#options))
 
----- 
+----
 
 ### filename
 
@@ -90,6 +90,21 @@ Default: `templates`
 #### standalone (Boolean)
 
 > Create a new AngularJS module, instead of using an existing.
+
+Default: `false`
+
+#### standaloneModule (Boolean)
+
+> Create a new AngularJS node module, which is properly exported,
+> so you could use it in your browserify project.
+>
+> Example browserify angular app with template cache module:
+>
+> require('angular');
+>
+> var app = angular.module('app', [
+>   require('./templates_cache').name
+> ]).config(require('./routes'));
 
 Default: `false`
 

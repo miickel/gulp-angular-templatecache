@@ -36,8 +36,13 @@ module.exports = function(filename, options) {
 		filename = options.filename || 'templates.js';
 	}
 
-	var templateHeader = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
-	var templateFooter = '}]);';
+  var templateHeader = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
+  var templateFooter = '}]);';
+
+  if (options.standaloneModule) {
+    templateHeader = 'module.exports = ' + templateHeader;
+    options.standalone = true;
+  }
 
 	return es.pipeline(
 		templateCache(options.root || '', options.base),

@@ -2,7 +2,7 @@
 
 > Concatenates and registers AngularJS templates in the `$templateCache`.
 
-[![NPM version](https://badge.fury.io/js/gulp-angular-templatecache.png)](https://npmjs.org/package/gulp-angular-templatecache) [![Dependency Status](https://gemnasium.com/miickel/gulp-angular-templatecache.png)](https://gemnasium.com/miickel/gulp-angular-templatecache) [![Build Status](https://secure.travis-ci.org/miickel/gulp-angular-templatecache.png?branch=master)](http://travis-ci.org/miickel/gulp-angular-templatecache)
+[![NPM version](https://badge.fury.io/js/gulp-angular-templatecache.svg)](https://npmjs.org/package/gulp-angular-templatecache) [![Dependency Status](https://gemnasium.com/miickel/gulp-angular-templatecache.svg)](https://gemnasium.com/miickel/gulp-angular-templatecache) [![Build Status](https://secure.travis-ci.org/miickel/gulp-angular-templatecache.svg?branch=master)](http://travis-ci.org/miickel/gulp-angular-templatecache)
 
 ----
 <a href="#install">Install</a> |

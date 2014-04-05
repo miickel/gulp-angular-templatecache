@@ -7,13 +7,21 @@ var footer = require('gulp-footer');
 var htmlJsStr = require('js-string-escape');
 
 function templateCache(root, base) {
-  if (base && base.substr(-1) !== path.sep) {
-    base += path.sep;
-  }
+  if (base && base.substr(-1) != path.sep)
+    base += path.sep
 
-  return es.map(function(file, callback) {
+  return es.map(function(file, cb) {
     var template = '$templateCache.put("<%= url %>","<%= contents %>");';
-    var url = path.join(root, file.path.replace(base || file.base, ''));
+    var url = path.join(root, file.path.replace(file.base , ''));
+    if(base) {
+      //Handle absolute base uri
+      if(base[0] === "/" || base[0] === "~") {
+        url = path.join(root, file.path.replace(base, ''));
+      //Handle relative base uri
+      } else {
+        url = path.join(root, file.path.replace(file.base + base, ''));
+      }
+    }
 
     if (process.platform === 'win32') {
       url = url.replace(/\\/g, '/');
@@ -25,7 +33,7 @@ function templateCache(root, base) {
       file: file
     }));
 
-    callback(null, file);
+    cb(null, file);
   });
 }
 

@@ -12,7 +12,7 @@ function templateCache(root, base) {
   }
 
   return es.map(function(file, callback) {
-    var template = '$templateCache.put("<%= url %>","<%= contents %>");';
+    var template = '  $templateCache.put("<%= url %>","<%= contents %>");';
     var url = path.join(root, file.path.replace(base || file.base, ''));
 
     if (process.platform === 'win32') {
@@ -37,8 +37,8 @@ module.exports = function(filename, options) {
     filename = options.filename || 'templates.js';
   }
 
-  var templateHeader = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
-  var templateFooter = '}]);';
+  var templateHeader = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {\n';
+  var templateFooter = '\n}]);';
 
   return es.pipeline(
     templateCache(options.root || '', options.base),

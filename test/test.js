@@ -9,7 +9,7 @@ it('should build valid $templateCache from two html-files', function(cb) {
   stream.on('data', function(file) {
     assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
     assert.equal(file.relative, 'templates.js');
-    assert.equal(file.contents.toString('utf8'), 'angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");\n$templateCache.put("/template-b.html","<h1 id=\\"template-b\\">I\\\'m template B!</h1>");}]);');
+    assert.equal(file.contents.toString('utf8'), 'angular.module("templates").run(["$templateCache", function($templateCache) {\n  $templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");\n  $templateCache.put("/template-b.html","<h1 id=\\"template-b\\">I\\\'m template B!</h1>");\n}]);');
     cb();
   });
 
@@ -36,7 +36,7 @@ it('should set proper template urls using options.root', function(cb) {
   stream.on('data', function(file) {
     assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
     assert.equal(file.relative, 'templates.js');
-    assert.equal(file.contents.toString('utf8'), 'angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+    assert.equal(file.contents.toString('utf8'), 'angular.module("templates").run(["$templateCache", function($templateCache) {\n  $templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");\n}]);');
     cb();
   });
 
@@ -57,7 +57,7 @@ it('should be able to create standalone module', function(cb) {
   stream.on('data', function(file) {
     assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
     assert.equal(file.relative, 'templates.js');
-    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {\n  $templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");\n}]);');
     cb();
   });
 
@@ -97,7 +97,7 @@ it('can set options using first parameter when no filename is specified', functi
   stream.on('data', function(file) {
     assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
     assert.equal(file.relative, 'templates.js');
-    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {\n  $templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");\n}]);');
     cb();
   });
 
@@ -120,7 +120,7 @@ it('can set filename in options', function(cb) {
   stream.on('data', function(file) {
     assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/foobar.js'));
     assert.equal(file.relative, 'foobar.js');
-    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {\n  $templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");\n}]);');
     cb();
   });
 
@@ -143,7 +143,7 @@ it('can override file base path in options', function(cb) {
   stream.on('data', function(file) {
     assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
     assert.equal(file.relative, 'templates.js');
-    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/views/test/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {\n  $templateCache.put("/views/test/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");\n}]);');
     cb();
   });
 

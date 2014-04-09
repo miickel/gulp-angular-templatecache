@@ -8,7 +8,7 @@ var htmlJsStr = require('js-string-escape');
 
 function templateCache(root, base) {
   if (base && base.substr(-1) !== path.sep) {
-    base += path.sep;
+    base += '/';
   }
 
   return es.map(function(file, callback) {

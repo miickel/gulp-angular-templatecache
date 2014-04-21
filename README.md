@@ -1,15 +1,21 @@
 # gulp-angular-templatecache
 
+[![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://npmjs.org/package/gulp-angular-templatecache)
+[![NPM version](http://img.shields.io/npm/v/gulp-angular-templatecache.svg?style=flat)](https://npmjs.org/package/gulp-angular-templatecache)
+[![NPM version](http://img.shields.io/npm/dm/gulp-angular-templatecache.svg?style=flat)](https://npmjs.org/package/gulp-angular-templatecache)
+[![Build Status](http://img.shields.io/travis/miickel/gulp-angular-templatecache.svg?style=flat)](http://travis-ci.org/miickel/gulp-angular-templatecache)
+[![Dependency Status](http://img.shields.io/gemnasium/miickel/gulp-angular-templatecache.svg?style=flat)](https://gemnasium.com/miickel/gulp-angular-templatecache)
+[![Unicorn Status](http://img.shields.io/badge/unicorn-approved-ff69b4.svg?style=flat)](https://twitter.com/sindresorhus/status/457989012528316416)
+
 > Concatenates and registers AngularJS templates in the `$templateCache`.
 
-[![NPM version](https://badge.fury.io/js/gulp-angular-templatecache.svg)](https://npmjs.org/package/gulp-angular-templatecache) [![Dependency Status](https://gemnasium.com/miickel/gulp-angular-templatecache.svg)](https://gemnasium.com/miickel/gulp-angular-templatecache) [![Build Status](https://secure.travis-ci.org/miickel/gulp-angular-templatecache.svg?branch=master)](http://travis-ci.org/miickel/gulp-angular-templatecache)
-
-----
 <a href="#install">Install</a> |
 <a href="#example">Example</a> |
 <a href="#api">API</a> |
 [Releases](https://github.com/miickel/gulp-angular-templatecache/releases) |
 <a href="#license">License</a>
+
+----
 
 
 ## Install

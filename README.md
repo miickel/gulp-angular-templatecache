@@ -5,7 +5,6 @@
 [![NPM version](http://img.shields.io/npm/dm/gulp-angular-templatecache.svg?style=flat)](https://npmjs.org/package/gulp-angular-templatecache)
 [![Build Status](http://img.shields.io/travis/miickel/gulp-angular-templatecache.svg?style=flat)](http://travis-ci.org/miickel/gulp-angular-templatecache)
 [![Dependency Status](http://img.shields.io/gemnasium/miickel/gulp-angular-templatecache.svg?style=flat)](https://gemnasium.com/miickel/gulp-angular-templatecache)
-[![Unicorn Status](http://img.shields.io/badge/unicorn-approved-ff69b4.svg?style=flat)](https://twitter.com/sindresorhus/status/457989012528316416)
 
 > Concatenates and registers AngularJS templates in the `$templateCache`.
 

@@ -102,7 +102,7 @@ Default: `false`
 
 > Allows you to override file base path.
 
-Default: file.base (file path of the current file being processed)
+Default: `file.base` (file path of the current file being processed)
 
 
 ## Changes

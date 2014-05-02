@@ -155,3 +155,27 @@ it('can override file base path in options', function(cb) {
 
   stream.end();
 });
+
+
+it('should prefix the urls with the options.baseVar', function(cb) {
+  var stream = templateCache({
+    standalone: true,
+    base: '~/dev/',
+    var: 'WEBROOT'
+  });
+
+  stream.on('data', function(file) {
+    assert.equal(path.normalize(file.path), path.normalize('~/dev/templates.js'));
+    assert.equal(file.relative, 'templates.js');
+    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", "WEBROOT", function($templateCache, WEBROOT) {$templateCache.put(WEBROOT+"template.html","The contents");}]);');
+    cb();
+  });
+
+  stream.write(new gutil.File({
+    base: '~/dev/',
+    path: '~/dev/template.html',
+    contents: new Buffer('The contents')
+  }));
+
+  stream.end();
+});

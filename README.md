@@ -68,7 +68,7 @@ Include this file in your app and AngularJS will use the $templateCache when ava
 
 gulp-angular-templatecache([filename](#filename), [options](#options))
 
----- 
+----
 
 ### filename
 
@@ -104,6 +104,11 @@ Default: `false`
 
 Default: `file.base` (file path of the current file being processed)
 
+#### var (String)
+
+> Allows you to inject an angular variable/constant to dynamicly prefix the urls.
+
+Default: no prefix
 
 ## Changes
 

@@ -68,7 +68,7 @@ Include this file in your app and AngularJS will use the $templateCache when ava
 
 gulp-angular-templatecache([filename](#filename), [options](#options))
 
----- 
+----
 
 ### filename
 
@@ -104,6 +104,14 @@ Default: `false`
 
 Default: `file.base` (file path of the current file being processed)
 
+#### urlMap (Function (templateFile,root,base))
+
+> Allows you to override how the template url is generated.
+
+Default:
+```js
+				return path.join(root, file.path.replace(base || file.base, ''))
+```
 
 ## Changes
 

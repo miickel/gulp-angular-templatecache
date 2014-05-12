@@ -28,6 +28,39 @@ it('should build valid $templateCache from two html-files', function(cb) {
   stream.end();
 });
 
+it('should build a url for the template according to options.urlMap',function(cb){
+
+  var stream = templateCache('templates.js',{
+    root:"TestRoot",
+    base:"TestBase",
+    urlMap:function(file,root,base){
+      return "testUrl"+root+base;
+    }
+  })
+
+  stream.on('data',function(file){
+    assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+    assert.equal(file.relative, 'templates.js');
+    assert.equal(file.contents.toString('utf8'), 'angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("testUrlTestRootTestBase/","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");\n$templateCache.put("testUrlTestRootTestBase/","<h1 id=\\"template-b\\">I\\\'m template B!</h1>");}]);');
+    cb();
+  });
+
+stream.write(new gutil.File({
+  base: '~/dev/projects/gulp-angular-templatecache/test',
+  path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+  contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+}));
+
+stream.write(new gutil.File({
+  base: '~/dev/projects/gulp-angular-templatecache/test',
+  path: '~/dev/projects/gulp-angular-templatecache/test/template-b.html',
+  contents: new Buffer('<h1 id="template-b">I\'m template B!</h1>')
+}));
+
+  stream.end();
+
+})
+
 it('should set proper template urls using options.root', function(cb) {
   var stream = templateCache('templates.js', {
     root: '/views'

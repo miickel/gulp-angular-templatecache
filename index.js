@@ -6,14 +6,16 @@ var header = require('gulp-header');
 var footer = require('gulp-footer');
 var htmlJsStr = require('js-string-escape');
 
-function templateCache(root, base) {
+function templateCache(root, base, urlMap) {
   if (base && base.substr(-1) !== path.sep) {
     base += '/';
   }
 
+  var mapFunction = urlMap || function(file,root,base){return path.join(root, file.path.replace(base || file.base, ''))}
+
   return es.map(function(file, callback) {
     var template = '$templateCache.put("<%= url %>","<%= contents %>");';
-    var url = path.join(root, file.path.replace(base || file.base, ''));
+    var url = mapFunction(file,root,base);
 
     if (process.platform === 'win32') {
       url = url.replace(/\\/g, '/');
@@ -41,7 +43,7 @@ module.exports = function(filename, options) {
   var templateFooter = '}]);';
 
   return es.pipeline(
-    templateCache(options.root || '', options.base),
+    templateCache(options.root || '', options.base, options.urlMap),
     concat(filename),
     header(templateHeader, {
       module: options.module || 'templates',

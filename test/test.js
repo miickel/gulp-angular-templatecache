@@ -155,3 +155,29 @@ it('can override file base path in options', function(cb) {
 
   stream.end();
 });
+
+
+it('can provide a function to override file base path in options', function(cb) {
+  var stream = templateCache({
+    standalone: true,
+    root: '/templates',
+    base: function(file) {
+      return '/all/' + file.relative;
+    }
+  });
+
+  stream.on('data', function(file) {
+    assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+    assert.equal(file.relative, 'templates.js');
+    assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/templates/all/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+    cb();
+  });
+
+  stream.write(new gutil.File({
+    base: '~/dev/projects/gulp-angular-templatecache/test',
+    path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+    contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+  }));
+
+  stream.end();
+});

@@ -7,20 +7,20 @@ var footer = require('gulp-footer');
 var htmlJsStr = require('js-string-escape');
 
 function templateCache(root, base) {
-  if (!(typeof(base) == 'function') && base && base.substr(-1) !== path.sep) {
+  if (typeof base !== 'function' && base && base.substr(-1) !== path.sep) {
     base += '/';
   }
 
   return es.map(function(file, callback) {
     var template = '$templateCache.put("<%= url %>","<%= contents %>");';
-    var url; 
+    var url;
 
-    if (typeof(base) == 'function') {
+    if (typeof base === 'function') {
       url = path.join(root, base(file));
     } else {
       url = path.join(root, file.path.replace(base || file.base, ''));
     }
-    
+
     if (process.platform === 'win32') {
       url = url.replace(/\\/g, '/');
     }

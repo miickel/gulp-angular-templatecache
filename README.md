@@ -70,39 +70,29 @@ gulp-angular-templatecache([filename](#filename), [options](#options))
 
 ---- 
 
-### filename
+### filename - {string} [filename='templates.js']
 
 > Name to use when concatinating.
-
-Default: `templates.js`
 
 ----
 
 ### options
 
-#### root (String)
+#### root - {string} [root='']
 
 > Prefix for template URLs.
 
-Default: `''`
-
-#### module (String)
+#### module - {string} [module='templates']
 
 > Name of AngularJS module.
 
-Default: `templates`
-
-#### standalone (Boolean)
+#### standalone - {boolean} [standalone=false]
 
 > Create a new AngularJS module, instead of using an existing.
 
-Default: `false`
+#### base {string | function} [base=file.base]
 
-#### base (String)
-
-> Allows you to override file base path.
-
-Default: `file.base` (file path of the current file being processed)
+> Override file base path.
 
 
 ## Changes

@@ -15,6 +15,8 @@ function templateCache(root, base) {
     var template = '$templateCache.put("<%= url %>","<%= contents %>");';
     var url;
 
+    file.path = path.normalize(file.path);
+
     if (typeof base === 'function') {
       url = path.join(root, base(file));
     } else {

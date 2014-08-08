@@ -181,3 +181,28 @@ it('can provide a function to override file base path in options', function(cb) 
 
   stream.end();
 });
+
+describe('withRequire functionality', function(){
+  
+  it('should append require header to the beginning and to the end', function(cb){
+
+    var stream = templateCache('templates.js', {
+      withRequire: true
+    });
+
+    stream.on('data', function(file) {
+      assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+      assert.equal(file.relative, 'templates.js');
+      assert.equal(file.contents.toString('utf8'), 'define([\'angular\'], function(angular) { \'use strict\'; return angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);});');
+      cb();
+    });
+
+    stream.write(new gutil.File({
+      base: '~/dev/projects/gulp-angular-templatecache/test',
+      path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+      contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+    }));
+
+    stream.end();
+  });
+});

@@ -45,16 +45,19 @@ module.exports = function(filename, options) {
     filename = options.filename || 'templates.js';
   }
 
-  var templateHeader = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
-  var templateFooter = '}]);';
+  var templateHeader = '<%= headerRequire %>angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
+  var templateFooter = '}]);<%= footerRequire %>';
 
   return es.pipeline(
     templateCache(options.root || '', options.base),
     concat(filename),
     header(templateHeader, {
       module: options.module || 'templates',
-      standalone: options.standalone ? ', []' : ''
+      standalone: options.standalone ? ', []' : '',
+      headerRequire: options.withRequire ? 'define([\'angular\'], function(angular) { \'use strict\'; return ' : ''
     }),
-    footer(templateFooter)
+    footer(templateFooter, {
+      footerRequire: options.withRequire ? '});' : ''
+    })
   );
 };

@@ -15,6 +15,13 @@ function templateCache(root, base) {
     var template = '$templateCache.put("<%= url %>","<%= contents %>");';
     var url;
 
+    if (file.processedByTemplateCache) {
+        /* Object has already been processed, probably returned by gulp-remember.
+        */
+        callback(null, file);
+        return
+    }
+    file.processedByTemplateCache = true
     file.path = path.normalize(file.path);
 
     if (typeof base === 'function') {

@@ -66,7 +66,7 @@ Include this file in your app and AngularJS will use the $templateCache when ava
 
 ## API
 
-gulp-angular-templatecache([filename](#filename), [options](#options))
+gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-templatecache#filename---string-filenametemplatesjs), [options](https://github.com/miickel/gulp-angular-templatecache#options))
 
 ---- 
 

@@ -14,6 +14,18 @@ var TEMPLATE_HEADER = 'angular.module("<%= module %>"<%= standalone %>).run(["$t
 var TEMPLATE_FOOTER = '}]);';
 var DEFAULT_FILENAME = 'templates.js';
 var DEFAULT_MODULE = 'templates';
+var MODULE_TEMPLATES = {
+
+  requirejs: {
+    header: 'define([\'angular\'], function(angular) { \'use strict\'; return ',
+    footer: '});'
+  },
+
+  browserify: {
+    header: 'module.exports = '
+  }
+
+};
 
 
 /**
@@ -85,6 +97,19 @@ function templateCacheStream(root, base) {
 
 }
 
+function wrapInModule(moduleSystem) {
+  var moduleTemplate = MODULE_TEMPLATES[moduleSystem];
+
+  if (!moduleTemplate) {
+    return gutil.noop();
+  }
+
+  return es.pipeline(
+    header(moduleTemplate.header || ''),
+    footer(moduleTemplate.footer || '')
+  );
+
+}
 
 /**
  * Concatenates and registers AngularJS templates in the $templateCache.
@@ -107,6 +132,14 @@ function templateCache(filename, options) {
   }
 
   /**
+   * Normalize moduleSystem option
+   */
+
+  if (options.moduleSystem) {
+    options.moduleSystem = options.moduleSystem.toLowerCase();
+  }
+
+  /**
    * Build templateCache
    */
 
@@ -117,7 +150,8 @@ function templateCache(filename, options) {
       module: options.module || DEFAULT_MODULE,
       standalone: options.standalone ? ', []' : ''
     }),
-    footer(TEMPLATE_FOOTER)
+    footer(TEMPLATE_FOOTER),
+    wrapInModule(options.moduleSystem)
   );
 
 }

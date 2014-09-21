@@ -27,7 +27,6 @@ var MODULE_TEMPLATES = {
 
 };
 
-
 /**
  * Add files to templateCache.
  */
@@ -74,7 +73,6 @@ function templateCacheFiles(root, base) {
 
 }
 
-
 /**
  * templateCache a stream of files.
  */
@@ -96,6 +94,10 @@ function templateCacheStream(root, base) {
   return es.map(templateCacheFiles(root, base));
 
 }
+
+/**
+ * Wrap templateCache with module system template.
+ */
 
 function wrapInModule(moduleSystem) {
   var moduleTemplate = MODULE_TEMPLATES[moduleSystem];

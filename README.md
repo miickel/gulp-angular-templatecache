@@ -63,6 +63,8 @@ angular.module("templates").run([$templateCache,
 
 Include this file in your app and AngularJS will use the $templateCache when available.
 
+__Note:__ this plugin creates a new AngularJS module called `templates`, if you would like to use an existing module, set [options.module](https://github.com/miickel/gulp-angular-templatecache#module---string-moduletemplates).
+
 
 ## API
 
@@ -73,8 +75,6 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 ### filename - {string} [filename='templates.js']
 
 > Name to use when concatinating.
-
-----
 
 ### options
 
@@ -93,6 +93,10 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 #### base {string | function} [base=file.base]
 
 > Override file base path.
+
+#### moduleSystem {string} [moduleSystem]
+
+> Wrap the templateCache in a module system. Currently supported systems: `RequireJS`, `Browserify`.
 
 
 ## Changes

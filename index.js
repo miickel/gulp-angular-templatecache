@@ -22,7 +22,7 @@ var MODULE_TEMPLATES = {
   },
 
   browserify: {
-    header: 'module.exports = '
+    header: '\'use strict\'; module.exports = '
   }
 
 };

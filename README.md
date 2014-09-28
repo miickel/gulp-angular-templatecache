@@ -63,7 +63,7 @@ angular.module("templates").run([$templateCache,
 
 Include this file in your app and AngularJS will use the $templateCache when available.
 
-__Note:__ this plugin creates a new AngularJS module called `templates`, if you would like to use an existing module, set [options.module](https://github.com/miickel/gulp-angular-templatecache#module---string-moduletemplates).
+__Note:__ this plugin will __not__ create a new AngularJS module by default, but use a module called `templates`. If you would like to create a new module, set [options.standalone](https://github.com/miickel/gulp-angular-templatecache#standalone---boolean-standalonefalse) to `true`.
 
 
 ## API

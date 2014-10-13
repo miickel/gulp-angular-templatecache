@@ -99,6 +99,10 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 > Wrap the templateCache in a module system. Currently supported systems: `RequireJS`, `Browserify`.
 
 
+#### trim {bool} [trim=false]
+
+> Trim templates
+
 ## Changes
 
 > This plugin uses Semantic Versioning 2.0.0

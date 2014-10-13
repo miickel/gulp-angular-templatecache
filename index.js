@@ -31,7 +31,7 @@ var MODULE_TEMPLATES = {
  * Add files to templateCache.
  */
 
-function templateCacheFiles(root, base) {
+function templateCacheFiles(root, base, trim) {
 
   return function templateCacheFile(file, callback) {
     var template = '$templateCache.put("<%= url %>","<%= contents %>");';
@@ -60,10 +60,14 @@ function templateCacheFiles(root, base) {
     /**
      * Create buffer
      */
+    var content = file.contents
+    if (trim) {
+      content = content.toString().replace(/\n/g,'').replace(/\s+/g,' ');
+    }
 
     file.contents = new Buffer(gutil.template(template, {
       url: url,
-      contents: htmlJsStr(file.contents),
+      contents: htmlJsStr(content),
       file: file
     }));
 
@@ -77,7 +81,7 @@ function templateCacheFiles(root, base) {
  * templateCache a stream of files.
  */
 
-function templateCacheStream(root, base) {
+function templateCacheStream(root, base, trim) {
 
   /**
    * Set relative base
@@ -91,7 +95,7 @@ function templateCacheStream(root, base) {
    * templateCache files
    */
 
-  return es.map(templateCacheFiles(root, base));
+  return es.map(templateCacheFiles(root, base, trim));
 
 }
 
@@ -146,7 +150,7 @@ function templateCache(filename, options) {
    */
 
   return es.pipeline(
-    templateCacheStream(options.root || '', options.base),
+    templateCacheStream(options.root || '', options.base, options.trim),
     concat(filename),
     header(TEMPLATE_HEADER, {
       module: options.module || DEFAULT_MODULE,

@@ -98,6 +98,10 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 
 > Wrap the templateCache in a module system. Currently supported systems: `RequireJS`, `Browserify`.
 
+#### angularVar {string} [angularVar='angular']
+
+> Changes the variable in which angular is saved (and, for which .module is called)
+> e.g. ```angularVar = 'myAngular'``` changes the generated code to ```myAngular.module("templates").run(/* ... */);```
 
 ## Changes
 

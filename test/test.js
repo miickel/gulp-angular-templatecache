@@ -252,5 +252,34 @@ describe('gulp-angular-templatecache', function () {
 
   });
 
+  describe('options.urlPrefix', function() {
+    it('should prepend a string to the url', function(cb) {
+      var stream = templateCache({
+        standalone: true,
+        root: 'templates',
+        base: function (file) {
+          return '/all/' + file.relative;
+        },
+        urlPrefix: './'
+      });
+
+      stream.on('data', function (file) {
+        console.log(file.contents.toString('utf8'));
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
+        assert.equal(file.relative, 'templates.js');
+        assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("./templates/all/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+        cb();
+      });
+
+      stream.write(new gutil.File({
+        base: __dirname,
+        path: __dirname + '/template-a.html',
+        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+      }));
+
+      stream.end();
+
+    });
+  });
 
 });

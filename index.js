@@ -31,7 +31,7 @@ var MODULE_TEMPLATES = {
  * Add files to templateCache.
  */
 
-function templateCacheFiles(root, base) {
+function templateCacheFiles(root, base, urlPrefix) {
 
   return function templateCacheFile(file, callback) {
     var template = '$templateCache.put("<%= url %>","<%= contents %>");';
@@ -58,6 +58,14 @@ function templateCacheFiles(root, base) {
     }
 
     /**
+      * One last chance to modify the url
+      */
+
+    if (urlPrefix) {
+      url = urlPrefix + url;
+    }
+
+    /**
      * Create buffer
      */
 
@@ -77,7 +85,7 @@ function templateCacheFiles(root, base) {
  * templateCache a stream of files.
  */
 
-function templateCacheStream(root, base) {
+function templateCacheStream(root, base, urlPrefix) {
 
   /**
    * Set relative base
@@ -91,7 +99,7 @@ function templateCacheStream(root, base) {
    * templateCache files
    */
 
-  return es.map(templateCacheFiles(root, base));
+  return es.map(templateCacheFiles(root, base, urlPrefix));
 
 }
 
@@ -146,7 +154,7 @@ function templateCache(filename, options) {
    */
 
   return es.pipeline(
-    templateCacheStream(options.root || '', options.base),
+    templateCacheStream(options.root || '', options.base, options.urlPrefix),
     concat(filename),
     header(TEMPLATE_HEADER, {
       module: options.module || DEFAULT_MODULE,

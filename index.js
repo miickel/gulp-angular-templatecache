@@ -142,17 +142,25 @@ function templateCache(filename, options) {
   }
 
   /**
+   * Prepare header / footer
+   */
+
+  var templateHeader = options.templateHeader || TEMPLATE_HEADER;
+  var templateFooter = options.templateFooter || TEMPLATE_FOOTER;
+
+
+  /**
    * Build templateCache
    */
 
   return es.pipeline(
     templateCacheStream(options.root || '', options.base),
     concat(filename),
-    header(TEMPLATE_HEADER, {
+    header(templateHeader, {
       module: options.module || DEFAULT_MODULE,
       standalone: options.standalone ? ', []' : ''
     }),
-    footer(TEMPLATE_FOOTER),
+    footer(templateFooter),
     wrapInModule(options.moduleSystem)
   );
 

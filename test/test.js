@@ -216,7 +216,7 @@ describe('gulp-angular-templatecache', function () {
       stream.on('data', function (file) {
         assert.equal(file.path, path.normalize(__dirname + '/templates.js'));
         assert.equal(file.relative, 'templates.js');
-        assert.equal(file.contents.toString('utf8'), 'module.exports = angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+        assert.equal(file.contents.toString('utf8'), '\'use strict\'; module.exports = angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
         cb();
       });
 

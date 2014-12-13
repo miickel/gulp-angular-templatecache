@@ -65,6 +65,10 @@ Include this file in your app and AngularJS will use the $templateCache when ava
 
 __Note:__ this plugin will __not__ create a new AngularJS module by default, but use a module called `templates`. If you would like to create a new module, set [options.standalone](https://github.com/miickel/gulp-angular-templatecache#standalone---boolean-standalonefalse) to `true`.
 
+__Note:__ if you use Visual Studio on Windows, you might encounter this error message: `ASPNETCOMPILER : error ASPRUNTIME: The specified path, file name, or both are too long. The fully qualified file name must be less than 260 characters, and the directory name must be less than 248 characters.`
+
+This is most likely due to long path names, and can be fixed by adding `lodash.bind` as a dev dependecy in your package.json. Anyway, if you encounter this error, please drop a note in #62, and we might merge #63.
+
 
 ## API
 

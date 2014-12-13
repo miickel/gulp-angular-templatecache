@@ -84,7 +84,7 @@ function templateCacheStream(root, base) {
    */
 
   if (typeof base !== 'function' && base && base.substr(-1) !== path.sep) {
-    base += '/';
+    base += path.sep;
   }
 
   /**

@@ -10,21 +10,21 @@ describe('gulp-angular-templatecache', function () {
     var stream = templateCache('templates.js');
 
     stream.on('data', function (file) {
-      assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+      assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
       assert.equal(file.relative, 'templates.js');
       assert.equal(file.contents.toString('utf8'), 'angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");\n$templateCache.put("/template-b.html","<h1 id=\\"template-b\\">I\\\'m template B!</h1>");}]);');
       cb();
     });
 
     stream.write(new gutil.File({
-      base: '~/dev/projects/gulp-angular-templatecache/test',
-      path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+      base: __dirname,
+      path: __dirname + '/template-a.html',
       contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
     }));
 
     stream.write(new gutil.File({
-      base: '~/dev/projects/gulp-angular-templatecache/test',
-      path: '~/dev/projects/gulp-angular-templatecache/test/template-b.html',
+      base: __dirname,
+      path: __dirname + '/template-b.html',
       contents: new Buffer('<h1 id="template-b">I\'m template B!</h1>')
     }));
 
@@ -38,15 +38,15 @@ describe('gulp-angular-templatecache', function () {
     });
 
     stream.on('data', function (file) {
-      assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+      assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
       assert.equal(file.relative, 'templates.js');
       assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
       cb();
     });
 
     stream.write(new gutil.File({
-      base: '~/dev/projects/gulp-angular-templatecache/test',
-      path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+      base: __dirname,
+      path: __dirname + '/template-a.html',
       contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
     }));
 
@@ -62,15 +62,15 @@ describe('gulp-angular-templatecache', function () {
       });
 
       stream.on('data', function (file) {
-        assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
         assert.equal(file.relative, 'templates.js');
         assert.equal(file.contents.toString('utf8'), 'angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
         cb();
       });
 
       stream.write(new gutil.File({
-        base: '~/dev/projects/gulp-angular-templatecache/test',
-        path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+        base: __dirname,
+        path: __dirname + '/template-a.html',
         contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
@@ -88,15 +88,15 @@ describe('gulp-angular-templatecache', function () {
       });
 
       stream.on('data', function (file) {
-        assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
         assert.equal(file.relative, 'templates.js');
         assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
         cb();
       });
 
       stream.write(new gutil.File({
-        base: '~/dev/projects/gulp-angular-templatecache/test',
-        path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+        base: __dirname,
+        path: __dirname + '/template-a.html',
         contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
@@ -112,14 +112,14 @@ describe('gulp-angular-templatecache', function () {
       var stream = templateCache();
 
       stream.on('data', function (file) {
-        assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
         assert.equal(file.relative, 'templates.js');
         cb();
       });
 
       stream.write(new gutil.File({
-        base: '~/dev/projects/gulp-angular-templatecache/test',
-        path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+        base: __dirname,
+        path: __dirname + '/template-a.html',
         contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
@@ -134,15 +134,15 @@ describe('gulp-angular-templatecache', function () {
       });
 
       stream.on('data', function (file) {
-        assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/foobar.js'));
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/foobar.js'));
         assert.equal(file.relative, 'foobar.js');
         assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/views/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
         cb();
       });
 
       stream.write(new gutil.File({
-        base: '~/dev/projects/gulp-angular-templatecache/test',
-        path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+        base: __dirname,
+        path: __dirname + '/template-a.html',
         contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
@@ -158,19 +158,19 @@ describe('gulp-angular-templatecache', function () {
       var stream = templateCache({
         standalone: true,
         root: '/views',
-        base: '~/dev/projects/gulp-angular-templatecache'
+        base: path.resolve(__dirname, '..')
       });
 
       stream.on('data', function (file) {
-        assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
         assert.equal(file.relative, 'templates.js');
         assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/views/test/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
         cb();
       });
 
       stream.write(new gutil.File({
-        base: '~/dev/projects/gulp-angular-templatecache/test',
-        path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+        base: __dirname,
+        path: __dirname + '/template-a.html',
         contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
@@ -187,15 +187,15 @@ describe('gulp-angular-templatecache', function () {
       });
 
       stream.on('data', function (file) {
-        assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
         assert.equal(file.relative, 'templates.js');
         assert.equal(file.contents.toString('utf8'), 'angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/templates/all/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
         cb();
       });
 
       stream.write(new gutil.File({
-        base: '~/dev/projects/gulp-angular-templatecache/test',
-        path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+        base: __dirname,
+        path: __dirname + '/template-a.html',
         contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
@@ -214,15 +214,15 @@ describe('gulp-angular-templatecache', function () {
       });
 
       stream.on('data', function (file) {
-        assert.equal(file.path, '~/dev/projects/gulp-angular-templatecache/test/templates.js');
+        assert.equal(file.path, path.normalize(__dirname + '/templates.js'));
         assert.equal(file.relative, 'templates.js');
         assert.equal(file.contents.toString('utf8'), 'module.exports = angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
         cb();
       });
 
       stream.write(new gutil.File({
-        base: '~/dev/projects/gulp-angular-templatecache/test',
-        path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+        base: __dirname,
+        path: __dirname + '/template-a.html',
         contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
@@ -235,15 +235,15 @@ describe('gulp-angular-templatecache', function () {
       });
 
       stream.on('data', function (file) {
-        assert.equal(path.normalize(file.path), path.normalize('~/dev/projects/gulp-angular-templatecache/test/templates.js'));
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
         assert.equal(file.relative, 'templates.js');
         assert.equal(file.contents.toString('utf8'), 'define([\'angular\'], function(angular) { \'use strict\'; return angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("/template-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);});');
         cb();
       });
 
       stream.write(new gutil.File({
-        base: '~/dev/projects/gulp-angular-templatecache/test',
-        path: '~/dev/projects/gulp-angular-templatecache/test/template-a.html',
+        base: __dirname,
+        path: __dirname + '/template-a.html',
         contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
       }));
 

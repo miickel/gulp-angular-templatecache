@@ -78,7 +78,7 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 
 ### options
 
-#### root - {string} [root='']
+#### root - {string}
 
 > Prefix for template URLs.
 
@@ -94,9 +94,25 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 
 > Override file base path.
 
-#### moduleSystem {string} [moduleSystem]
+#### moduleSystem {string}
 
 > Wrap the templateCache in a module system. Currently supported systems: `RequireJS`, `Browserify`.
+
+#### templateHeader {string} [templateHeader=see below]
+
+> Override template header.
+
+```js
+var TEMPLATE_HEADER = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
+```
+
+#### templateFooter {string} [templateFooter=see below]
+
+> Override template footer.
+
+```js
+var TEMPLATE_FOOTER = '}]);';
+```
 
 
 ## Changes

@@ -26,15 +26,17 @@ var MODULE_TEMPLATES = {
   }
 
 };
+var SINGLE_QUOTE = '\'';
+var DOUBLE_QUOTE = '\"';
 
 /**
  * Add files to templateCache.
  */
 
-function templateCacheFiles(root, base) {
+function templateCacheFiles(root, base, quote) {
 
   return function templateCacheFile(file, callback) {
-    var template = '$templateCache.put("<%= url %>","<%= contents %>");';
+    var template = ['$templateCache.put(', '<%= url %>', ',', '<%= contents %>', ');'].join(quote);
     var url;
 
     file.path = path.normalize(file.path);
@@ -77,7 +79,7 @@ function templateCacheFiles(root, base) {
  * templateCache a stream of files.
  */
 
-function templateCacheStream(root, base) {
+function templateCacheStream(root, base, quote) {
 
   /**
    * Set relative base
@@ -91,7 +93,7 @@ function templateCacheStream(root, base) {
    * templateCache files
    */
 
-  return es.map(templateCacheFiles(root, base));
+  return es.map(templateCacheFiles(root, base, quote));
 
 }
 
@@ -146,7 +148,7 @@ function templateCache(filename, options) {
    */
 
   return es.pipeline(
-    templateCacheStream(options.root || '', options.base),
+    templateCacheStream(options.root || '', options.base, options.singlequote ? SINGLE_QUOTE : DOUBLE_QUOTE),
     concat(filename),
     header(TEMPLATE_HEADER, {
       module: options.module || DEFAULT_MODULE,

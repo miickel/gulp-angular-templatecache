@@ -34,7 +34,7 @@ var MODULE_TEMPLATES = {
 function templateCacheFiles(root, base) {
 
   return function templateCacheFile(file, callback) {
-    var template = '$templateCache.put("<%= url %>","<%= contents %>");';
+    var template = '\t$templateCache.put("<%= url %>","<%= contents %>");';
     var url;
 
     file.path = path.normalize(file.path);
@@ -141,6 +141,15 @@ function templateCache(filename, options) {
     options.moduleSystem = options.moduleSystem.toLowerCase();
   }
 
+  /**
+   * Override templates
+   */  
+  if(options.templateHeader) 
+    TEMPLATE_HEADER = options.templateHeader;
+
+  if(options.templateFooter) 
+    TEMPLATE_FOOTER = options.templateFooter;
+  
   /**
    * Build templateCache
    */

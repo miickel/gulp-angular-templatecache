@@ -35,7 +35,8 @@
     "js-string-escape": "~1.0.0",
     "gulp-footer": "1.x",
     "gulp-header": "1.x",
-    "gulp-concat": "2.x"
+    "gulp-concat": "2.x",
+    "lodash.bind": "*"
   },
   "devDependencies": {
     "mocha": "latest"

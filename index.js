@@ -10,7 +10,7 @@ var htmlJsStr = require('js-string-escape');
  * "constants"
  */
 
-var TEMPLATE_HEADER = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
+var TEMPLATE_HEADER = '<%= angular %>.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
 var TEMPLATE_FOOTER = '}]);';
 var DEFAULT_FILENAME = 'templates.js';
 var DEFAULT_MODULE = 'templates';
@@ -149,6 +149,7 @@ function templateCache(filename, options) {
     templateCacheStream(options.root || '', options.base),
     concat(filename),
     header(TEMPLATE_HEADER, {
+      angular: options.angularVar || 'angular',
       module: options.module || DEFAULT_MODULE,
       standalone: options.standalone ? ', []' : ''
     }),

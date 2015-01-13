@@ -23,6 +23,11 @@ var MODULE_TEMPLATES = {
 
   browserify: {
     header: '\'use strict\'; module.exports = '
+  },
+
+  iife: {
+    header: '(function(){',
+      footer: '})();'
   }
 
 };

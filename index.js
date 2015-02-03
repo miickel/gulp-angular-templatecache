@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
 var htmlJsStr = require('js-string-escape');
+var replace = require('gulp-replace');
 
 /**
  * "constants"
@@ -27,6 +28,13 @@ var MODULE_TEMPLATES = {
 
 };
 
+function normalizePath(path) {
+  if (process.platform === 'win32') {
+    path = path.replace(/\\/g, '/');
+  }
+  return path;
+}
+
 /**
  * Add files to templateCache.
  */
@@ -37,7 +45,17 @@ function templateCacheFiles(root, base) {
     var template = '$templateCache.put("<%= url %>","<%= contents %>");';
     var url;
 
+
     file.path = path.normalize(file.path);
+
+    var filePath = file.path;
+
+    /**
+     * Normalize path (win only)
+     */
+
+    filePath = normalizePath(filePath);
+    root = normalizePath(root);
 
     /**
      * Rewrite url
@@ -46,16 +64,15 @@ function templateCacheFiles(root, base) {
     if (typeof base === 'function') {
       url = path.join(root, base(file));
     } else {
-      url = path.join(root, file.path.replace(base || file.base, ''));
+      base = normalizePath(base || file.base);
+      url = path.join(root, filePath.replace(base, ''));
     }
 
     /**
      * Normalize url (win only)
      */
 
-    if (process.platform === 'win32') {
-      url = url.replace(/\\/g, '/');
-    }
+    url = normalizePath(url);
 
     /**
      * Create buffer
@@ -161,7 +178,11 @@ function templateCache(filename, options) {
       standalone: options.standalone ? ', []' : ''
     }),
     footer(templateFooter),
-    wrapInModule(options.moduleSystem)
+    wrapInModule(options.moduleSystem),
+    replace(/\\n/g,''),
+    replace(/\\r/g,''),
+    replace(/>\s+</g,'><'),
+    replace(/\s{2,}/g,' ')
   );
 
 }

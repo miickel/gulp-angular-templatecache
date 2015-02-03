@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
 var htmlJsStr = require('js-string-escape');
+var replace = require('gulp-replace');
 
 /**
  * "constants"
@@ -161,7 +162,11 @@ function templateCache(filename, options) {
       standalone: options.standalone ? ', []' : ''
     }),
     footer(templateFooter),
-    wrapInModule(options.moduleSystem)
+    wrapInModule(options.moduleSystem),
+    replace(/\\n/g,''),
+    replace(/\\r/g,''),
+    replace(/>\s+</g,'><'),
+    replace(/\s{2,}/g,' ')
   );
 
 }

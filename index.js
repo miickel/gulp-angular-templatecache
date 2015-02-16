@@ -160,7 +160,9 @@ function templateCache(filename, options) {
       module: options.module || DEFAULT_MODULE,
       standalone: options.standalone ? ', []' : ''
     }),
-    footer(templateFooter),
+    footer(templateFooter, {
+      module: options.module || DEFAULT_MODULE
+    }),
     wrapInModule(options.moduleSystem)
   );
 

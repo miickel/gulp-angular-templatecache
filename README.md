@@ -36,7 +36,7 @@ npm install gulp-angular-templatecache --save-dev
 var templateCache = require('gulp-angular-templatecache');
 
 gulp.task('default', function () {
-	gulp.src('templates/**/*.html')
+	return gulp.src('templates/**/*.html')
 		.pipe(templateCache())
 		.pipe(gulp.dest('public'));
 });

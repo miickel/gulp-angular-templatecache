@@ -100,7 +100,7 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 
 #### moduleSystem {string}
 
-> Wrap the templateCache in a module system. Currently supported systems: `RequireJS`, `Browserify`.
+> Wrap the templateCache in a module system. Currently supported systems: `RequireJS`, `Browserify` and `IIFE` (Immediately-Invoked Function Expression).
 
 #### templateHeader {string} [templateHeader=see below]
 

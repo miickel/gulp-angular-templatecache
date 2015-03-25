@@ -34,6 +34,10 @@ var MODULE_TEMPLATES = {
 function templateCacheFiles(root, base) {
 
   return function templateCacheFile(file, callback) {
+    if (file.processedByTemplateCache) {
+      return callback(null, file);
+    }
+
     var template = '$templateCache.put("<%= url %>","<%= contents %>");';
     var url;
 
@@ -66,6 +70,8 @@ function templateCacheFiles(root, base) {
       contents: htmlJsStr(file.contents),
       file: file
     }));
+
+    file.processedByTemplateCache = true;
 
     callback(null, file);
 

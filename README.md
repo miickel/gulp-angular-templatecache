@@ -36,9 +36,9 @@ npm install gulp-angular-templatecache --save-dev
 var templateCache = require('gulp-angular-templatecache');
 
 gulp.task('default', function () {
-	return gulp.src('templates/**/*.html')
-		.pipe(templateCache())
-		.pipe(gulp.dest('public'));
+  return gulp.src('templates/**/*.html')
+    .pipe(templateCache())
+    .pipe(gulp.dest('public'));
 });
 ```
 
@@ -49,13 +49,13 @@ gulp.task('default', function () {
 ```js
 angular.module("templates").run([$templateCache,
   function($templateCache) {
-	$templateCache.put("template1.html",
-		// template1.html content (escaped)
-	);
-	$templateCache.put("template2.html",
-		// template2.html content (escaped)
-	);
-	// etc.
+  $templateCache.put("template1.html",
+    // template1.html content (escaped)
+  );
+  $templateCache.put("template2.html",
+    // template2.html content (escaped)
+  );
+  // etc.
   }
 ]);
 
@@ -110,6 +110,14 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 var TEMPLATE_HEADER = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
 ```
 
+#### templateBody {string} [templateBody=see below]
+
+> Override template body.
+
+```js
+var TEMPLATE_BODY = '$templateCache.put("<%= url %>","<%= contents %>");';
+```
+
 #### templateFooter {string} [templateFooter=see below]
 
 > Override template footer.
@@ -132,16 +140,16 @@ See [Releases](https://github.com/miickel/gulp-angular-templatecache/releases)
 > Cleaner code, more tests and improved documentation. Thoroughly used in development.
 
 - adds
-	- `options.standalone` (**breaking**)
+  - `options.standalone` (**breaking**)
 - fixes
-	- Windows support
+  - Windows support
 - changes
-	- `filename` now optional
+  - `filename` now optional
 
 ### 0.3.0
 
 - adds
-	- `options.module`
+  - `options.module`
 
 ### 0.2.0 and earlier
 

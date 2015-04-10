@@ -58,6 +58,10 @@ function templateCacheFiles(root, base) {
       url = path.join(root, file.path.replace(base || file.base, ''));
     }
 
+    if(root === '.' || root.indexOf('./') === 0) {
+      url = './' + url;
+    }
+
     /**
      * Normalize url (win only)
      */

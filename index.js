@@ -36,7 +36,7 @@ var MODULE_TEMPLATES = {
  * Add files to templateCache.
  */
 
-function templateCacheFiles(root, base) {
+function templateCacheFiles(root, base, transformUrl) {
 
   return function templateCacheFile(file, callback) {
     if (file.processedByTemplateCache) {
@@ -56,6 +56,10 @@ function templateCacheFiles(root, base) {
       url = path.join(root, base(file));
     } else {
       url = path.join(root, file.path.replace(base || file.base, ''));
+    }
+
+    if (typeof transformUrl === 'function') {
+      url = transformUrl(url);
     }
 
     /**
@@ -88,7 +92,7 @@ function templateCacheFiles(root, base) {
  * templateCache a stream of files.
  */
 
-function templateCacheStream(root, base) {
+function templateCacheStream(root, base, transformUrl) {
 
   /**
    * Set relative base
@@ -102,7 +106,7 @@ function templateCacheStream(root, base) {
    * templateCache files
    */
 
-  return es.map(templateCacheFiles(root, base));
+  return es.map(templateCacheFiles(root, base, transformUrl));
 
 }
 
@@ -165,7 +169,7 @@ function templateCache(filename, options) {
    */
 
   return es.pipeline(
-    templateCacheStream(options.root || '', options.base),
+    templateCacheStream(options.root || '', options.base, options.transformUrl),
     concat(filename),
     header(templateHeader, {
       module: options.module || DEFAULT_MODULE,

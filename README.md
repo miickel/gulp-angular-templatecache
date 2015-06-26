@@ -30,7 +30,7 @@ npm install gulp-angular-templatecache --save-dev
 
 **gulpfile.js**
 
-> Concatinate the contents of all .html-files in the templates directory and save to _public/templates.js_ (default filename).
+> Concatenate the contents of all .html-files in the templates directory and save to _public/templates.js_ (default filename).
 
 ```js
 var templateCache = require('gulp-angular-templatecache');
@@ -78,7 +78,7 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 
 ### filename - {string} [filename='templates.js']
 
-> Name to use when concatinating.
+> Name to use when concatenating.
 
 ### options
 

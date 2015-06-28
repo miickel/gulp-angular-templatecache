@@ -102,6 +102,16 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 
 > Wrap the templateCache in a module system. Currently supported systems: `RequireJS`, `Browserify` and `IIFE` (Immediately-Invoked Function Expression).
 
+#### transformUrl {function}
+
+> Transform the generated URL before it's put into `$templateCache`.
+
+```js
+transformUrl: function(url) {
+	return url.replace(/\.tpl\.html$/, '.html')
+}
+```
+
 #### templateHeader {string} [templateHeader=see below]
 
 > Override template header.

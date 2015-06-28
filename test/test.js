@@ -80,6 +80,58 @@ describe('gulp-angular-templatecache', function () {
   });
 
 
+  describe('options.transformUrl', function () {
+
+    it('should change the URL to the output of the function', function (cb) {
+      var stream = templateCache('templates.js', {
+        transformUrl: function(url) {
+          return url.replace(/template/, 'tpl');
+        }
+      });
+
+      stream.on('data', function (file) {
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
+        assert.equal(file.relative, 'templates.js');
+        assert.equal(file.contents.toString('utf8'), 'angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("/tpl-a.html","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+        cb();
+      });
+
+      stream.write(new gutil.File({
+        base: __dirname,
+        path: __dirname + '/template-a.html',
+        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+      }));
+
+      stream.end();
+    });
+
+    it('should set the final url, after any root option has been applied', function (cb) {
+      var stream = templateCache('templates.js', {
+        root: './views',
+        transformUrl: function(url) {
+          return '/completely/transformed/final';
+        }
+      });
+
+      stream.on('data', function (file) {
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
+        assert.equal(file.relative, 'templates.js');
+        assert.equal(file.contents.toString('utf8'), 'angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("/completely/transformed/final","<h1 id=\\"template-a\\">I\\\'m template A!</h1>");}]);');
+        cb();
+      });
+
+      stream.write(new gutil.File({
+        base: __dirname,
+        path: __dirname + '/template-a.html',
+        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+      }));
+
+      stream.end();
+    });
+
+  });
+
+
   describe('options.standalone', function () {
 
     it('should create standalone Angular module', function (cb) {

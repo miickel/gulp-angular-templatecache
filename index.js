@@ -27,7 +27,7 @@ var MODULE_TEMPLATES = {
 
   iife: {
     header: '(function(){',
-      footer: '})();'
+    footer: '})();'
   }
 
 };
@@ -56,6 +56,10 @@ function templateCacheFiles(root, base, transformUrl) {
       url = path.join(root, base(file));
     } else {
       url = path.join(root, file.path.replace(base || file.base, ''));
+    }
+
+    if (root === '.' || root.indexOf('./') === 0) {
+      url = './' + url;
     }
 
     if (typeof transformUrl === 'function') {

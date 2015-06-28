@@ -49,13 +49,13 @@ gulp.task('default', function () {
 ```js
 angular.module("templates").run([$templateCache,
   function($templateCache) {
-  $templateCache.put("template1.html",
-    // template1.html content (escaped)
-  );
-  $templateCache.put("template2.html",
-    // template2.html content (escaped)
-  );
-  // etc.
+    $templateCache.put("template1.html",
+      // template1.html content (escaped)
+    );
+    $templateCache.put("template2.html",
+      // template2.html content (escaped)
+    );
+    // etc.
   }
 ]);
 

@@ -11,7 +11,9 @@ var htmlJsStr = require('js-string-escape');
  */
 
 var TEMPLATE_HEADER = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
+var TEMPLATE_BODY = '$templateCache.put("<%= url %>","<%= contents %>");';
 var TEMPLATE_FOOTER = '}]);';
+
 var DEFAULT_FILENAME = 'templates.js';
 var DEFAULT_MODULE = 'templates';
 var MODULE_TEMPLATES = {
@@ -36,14 +38,14 @@ var MODULE_TEMPLATES = {
  * Add files to templateCache.
  */
 
-function templateCacheFiles(root, base, transformUrl) {
+function templateCacheFiles(root, base, templateBody, transformUrl) {
 
   return function templateCacheFile(file, callback) {
     if (file.processedByTemplateCache) {
       return callback(null, file);
     }
 
-    var template = '$templateCache.put("<%= url %>","<%= contents %>");';
+    var template = templateBody || TEMPLATE_BODY;
     var url;
 
     file.path = path.normalize(file.path);
@@ -96,7 +98,7 @@ function templateCacheFiles(root, base, transformUrl) {
  * templateCache a stream of files.
  */
 
-function templateCacheStream(root, base, transformUrl) {
+function templateCacheStream(root, base, templateBody, transformUrl) {
 
   /**
    * Set relative base
@@ -110,7 +112,7 @@ function templateCacheStream(root, base, transformUrl) {
    * templateCache files
    */
 
-  return es.map(templateCacheFiles(root, base, transformUrl));
+  return es.map(templateCacheFiles(root, base, templateBody, transformUrl));
 
 }
 
@@ -167,13 +169,12 @@ function templateCache(filename, options) {
   var templateHeader = options.templateHeader || TEMPLATE_HEADER;
   var templateFooter = options.templateFooter || TEMPLATE_FOOTER;
 
-
   /**
    * Build templateCache
    */
 
   return es.pipeline(
-    templateCacheStream(options.root || '', options.base, options.transformUrl),
+    templateCacheStream(options.root || '', options.base, options.templateBody, options.transformUrl),
     concat(filename),
     header(templateHeader, {
       module: options.module || DEFAULT_MODULE,

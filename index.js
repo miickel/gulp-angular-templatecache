@@ -27,6 +27,10 @@ var MODULE_TEMPLATES = {
     header: '\'use strict\'; module.exports = '
   },
 
+  es6: {
+    header: 'import angular from \'angular\'; export default ',
+  },
+
   iife: {
     header: '(function(){',
     footer: '})();'

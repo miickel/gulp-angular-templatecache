@@ -45,46 +45,53 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
       return callback(null, file);
     }
 
+    var rootsArr = root instanceof Array ? root : [root];
     var template = templateBody || TEMPLATE_BODY;
     var url;
 
     file.path = path.normalize(file.path);
 
     /**
-     * Rewrite url
-     */
-
-    if (typeof base === 'function') {
-      url = path.join(root, base(file));
-    } else {
-      url = path.join(root, file.path.replace(base || file.base, ''));
-    }
-
-    if (root === '.' || root.indexOf('./') === 0) {
-      url = './' + url;
-    }
-
-    if (typeof transformUrl === 'function') {
-      url = transformUrl(url);
-    }
-
-    /**
-     * Normalize url (win only)
-     */
-
-    if (process.platform === 'win32') {
-      url = url.replace(/\\/g, '/');
-    }
-
-    /**
      * Create buffer
      */
 
-    file.contents = new Buffer(gutil.template(template, {
-      url: url,
-      contents: htmlJsStr(file.contents),
-      file: file
-    }));
+    file.contents = new Buffer(
+      rootsArr.reduce(function (templates, root) {
+
+        /**
+         * Rewrite url
+         */
+
+        if (typeof base === 'function') {
+          url = path.join(root, base(file));
+        } else {
+          url = path.join(root, file.path.replace(base || file.base, ''));
+        }
+
+        if (root === '.' || root.indexOf('./') === 0) {
+          url = './' + url;
+        }
+
+        if (typeof transformUrl === 'function') {
+          url = transformUrl(url);
+        }
+
+        /**
+         * Normalize url (win only)
+         */
+
+        if (process.platform === 'win32') {
+          url = url.replace(/\\/g, '/');
+        }
+
+        return templates + gutil.template(template, {
+          url: url,
+          contents: htmlJsStr(file.contents),
+          file: file
+        });
+
+      }, '')
+    );
 
     file.processedByTemplateCache = true;
 

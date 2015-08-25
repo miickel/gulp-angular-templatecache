@@ -38,7 +38,7 @@ var MODULE_TEMPLATES = {
  * Add files to templateCache.
  */
 
-function templateCacheFiles(root, base, templateBody, transformUrl) {
+function templateCacheFiles(root, base, templateBody, transformUrl, fileFlatting) {
 
   return function templateCacheFile(file, callback) {
     if (file.processedByTemplateCache) {
@@ -79,10 +79,17 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
     /**
      * Create buffer
      */
-
     file.contents = new Buffer(gutil.template(template, {
       url: url,
-      contents: htmlJsStr(file.contents),
+      contents: (function() {
+        var file_contents = file.contents;
+
+        if(fileFlatting) {
+          file_contents = ("" + file_contents).replace(/^\s+/gm, '');
+        }
+
+        return htmlJsStr(file_contents);
+      }()),
       file: file
     }));
 
@@ -98,7 +105,7 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
  * templateCache a stream of files.
  */
 
-function templateCacheStream(root, base, templateBody, transformUrl) {
+function templateCacheStream(root, base, templateBody, transformUrl, fileFlatting) {
 
   /**
    * Set relative base
@@ -112,7 +119,7 @@ function templateCacheStream(root, base, templateBody, transformUrl) {
    * templateCache files
    */
 
-  return es.map(templateCacheFiles(root, base, templateBody, transformUrl));
+  return es.map(templateCacheFiles(root, base, templateBody, transformUrl, fileFlatting));
 
 }
 
@@ -154,6 +161,8 @@ function templateCache(filename, options) {
     filename = options.filename || DEFAULT_FILENAME;
   }
 
+  options.flatten = !!options.flatten;
+
   /**
    * Normalize moduleSystem option
    */
@@ -174,7 +183,7 @@ function templateCache(filename, options) {
    */
 
   return es.pipeline(
-    templateCacheStream(options.root || '', options.base, options.templateBody, options.transformUrl),
+    templateCacheStream(options.root || '', options.base, options.templateBody, options.transformUrl, options.flatten),
     concat(filename),
     header(templateHeader, {
       module: options.module || DEFAULT_MODULE,

@@ -82,9 +82,9 @@ gulp-angular-templatecache([filename](https://github.com/miickel/gulp-angular-te
 
 ### options
 
-#### root - {string}
+#### root - {string|Array}
 
-> Prefix for template URLs.
+> Prefix for template URLs. May be an array of prefixes, to duplicate template across multiple domains.
 
 #### module - {string} [module='templates']
 

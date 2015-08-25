@@ -135,7 +135,9 @@ var TEMPLATE_BODY = '$templateCache.put("<%= url %>","<%= contents %>");';
 ```js
 var TEMPLATE_FOOTER = '}]);';
 ```
+#### flatten {bool} [flatten=false]
 
+> Remove white space at the beginning of each line
 
 ## Changes
 

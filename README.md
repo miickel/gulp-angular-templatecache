@@ -136,6 +136,23 @@ var TEMPLATE_BODY = '$templateCache.put("<%= url %>","<%= contents %>");';
 var TEMPLATE_FOOTER = '}]);';
 ```
 
+#### concat {function} [concat=see below]
+
+> Override concat function (default is gulp-concat).
+
+```js
+var watch = require('gulp-watch');
+var continuousConcat = require('gulp-continuous-concat');
+var templateCache = require('gulp-angular-templatecache');
+
+gulp.task('default', function () {
+  return gulp.src('templates/**/*.html')
+    .pipe(watch('templates/**/*.html'))
+    .pipe(templateCache('templates.js', { concat: continuousConcat }))
+    .pipe(gulp.dest('public'));
+});
+```
+
 
 ## Changes
 

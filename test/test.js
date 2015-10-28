@@ -439,5 +439,56 @@ describe('gulp-angular-templatecache', function () {
 
   });
 
+  describe('options.processHtml', function () {
+
+    it('should work if undefined', function (cb) {
+      var stream = templateCache('templates.js', {
+        processHtml: undefined,
+        templateHeader: 'var template = "',
+        templateFooter: '";'
+      });
+
+      stream.on('data', function (file) {
+        assert.equal(file.path, path.normalize(__dirname + '/templates.js'));
+        assert.equal(file.relative, 'templates.js');
+        assert.equal(file.contents.toString('utf8'), 'var template = "$templateCache.put("/template-a.html","<span>jon</span>");";');
+        cb();
+      });
+
+      stream.write(new gutil.File({
+        base: __dirname,
+        path: __dirname + '/template-a.html',
+        contents: new Buffer('<span>jon</span>')
+      }));
+
+      stream.end();
+    });
+
+    it('should call processHtml function', function (cb) {
+      var stream = templateCache('templates.js', {
+        processHtml: function (htmlContents) {
+          return htmlContents + '<br/>';
+        },
+        templateHeader: 'var template = "',
+        templateFooter: '";'
+      });
+
+      stream.on('data', function (file) {
+        assert.equal(file.path, path.normalize(__dirname + '/templates.js'));
+        assert.equal(file.relative, 'templates.js');
+        assert.equal(file.contents.toString('utf8'), 'var template = "$templateCache.put("/template-a.html","<span>jon</span><br/>");";');
+        cb();
+      });
+
+      stream.write(new gutil.File({
+        base: __dirname,
+        path: __dirname + '/template-a.html',
+        contents: new Buffer('<span>jon</span>')
+      }));
+
+      stream.end();
+    });
+
+  });
 
 });

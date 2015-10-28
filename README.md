@@ -136,6 +136,17 @@ var TEMPLATE_BODY = '$templateCache.put("<%= url %>","<%= contents %>");';
 var TEMPLATE_FOOTER = '}]);';
 ```
 
+#### processHtml {function}
+
+> Optional function that can be used to transform the html of a template before it is added to the cache file.
+
+```js
+processHtml: function(htmlContent) {
+	return minify(htmlContent, { removeAttributeQuotes: true });
+}
+```
+
+
 
 ## Changes
 

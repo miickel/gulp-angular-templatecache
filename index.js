@@ -86,7 +86,7 @@ function templateCacheFiles(root, base, templateBody, transformUrl, processHtml)
 
     file.contents = new Buffer(gutil.template(template, {
       url: url,
-      contents: processHtml(file.contents),
+      contents: processHtml(new String(file.contents)),
       file: file
     }));
 

@@ -42,7 +42,7 @@ var MODULE_TEMPLATES = {
  * Add files to templateCache.
  */
 
-function templateCacheFiles(root, base, templateBody, transformUrl) {
+function templateCacheFiles(root, base, templateBody, transformUrl, processHtml) {
 
   return function templateCacheFile(file, callback) {
     if (file.processedByTemplateCache) {
@@ -86,7 +86,7 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
 
     file.contents = new Buffer(gutil.template(template, {
       url: url,
-      contents: htmlJsStr(file.contents),
+      contents: processHtml(file.contents),
       file: file
     }));
 
@@ -102,7 +102,7 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
  * templateCache a stream of files.
  */
 
-function templateCacheStream(root, base, templateBody, transformUrl) {
+function templateCacheStream(root, base, templateBody, transformUrl, processHtml) {
 
   /**
    * Set relative base
@@ -116,7 +116,7 @@ function templateCacheStream(root, base, templateBody, transformUrl) {
    * templateCache files
    */
 
-  return es.map(templateCacheFiles(root, base, templateBody, transformUrl));
+  return es.map(templateCacheFiles(root, base, templateBody, transformUrl, processHtml));
 
 }
 
@@ -174,11 +174,18 @@ function templateCache(filename, options) {
   var templateFooter = options.templateFooter || TEMPLATE_FOOTER;
 
   /**
+   * Set HTML processing function
+   */
+  var processHtml = options.processHtml === undefined ? htmlJsStr : function(html) {
+    return htmlJsStr(options.processHtml(html));
+  };
+
+  /**
    * Build templateCache
    */
 
   return es.pipeline(
-    templateCacheStream(options.root || '', options.base, options.templateBody, options.transformUrl),
+    templateCacheStream(options.root || '', options.base, options.templateBody, options.transformUrl, processHtml),
     concat(filename),
     header(templateHeader, {
       module: options.module || DEFAULT_MODULE,

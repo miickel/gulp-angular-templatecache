@@ -20,20 +20,22 @@ var MODULE_TEMPLATES = {
 
   requirejs: {
     header: 'define([\'angular\'], function(angular) { \'use strict\'; return ',
-    footer: '});'
+    footer: '});\n'
   },
 
   browserify: {
-    header: '\'use strict\'; module.exports = '
+    header: '\'use strict\'; module.exports = ',
+    footer: '\n'
   },
 
   es6: {
     header: 'import angular from \'angular\'; export default ',
+    footer: '\n'
   },
 
   iife: {
     header: '(function(){',
-    footer: '})();'
+    footer: '})();\n'
   }
 
 };

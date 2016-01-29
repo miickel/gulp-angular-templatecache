@@ -12,7 +12,7 @@ var htmlJsStr = require('js-string-escape');
 
 var TEMPLATE_HEADER = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
 var TEMPLATE_BODY = '$templateCache.put("<%= url %>","<%= contents %>");';
-var TEMPLATE_FOOTER = '}]);';
+var TEMPLATE_FOOTER = '}]);\n';
 
 var DEFAULT_FILENAME = 'templates.js';
 var DEFAULT_MODULE = 'templates';

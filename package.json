@@ -1,6 +1,6 @@
 {
   "name": "gulp-angular-templatecache",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "Concatenates and registers AngularJS templates in the $templateCache.",
   "main": "index.js",
   "scripts": {
@@ -30,12 +30,12 @@
   "license": "MIT",
   "dependencies": {
     "event-stream": "3.x",
-    "path": "0.x",
-    "gulp-util": "3.x",
+    "gulp-concat": "2.x",
     "gulp-footer": "1.x",
     "gulp-header": "1.x",
-    "gulp-concat": "2.x"
+    "gulp-util": "3.x",
     "jsesc": "~1.0.0",
+    "path": "0.x"
   },
   "devDependencies": {
     "mocha": "latest"

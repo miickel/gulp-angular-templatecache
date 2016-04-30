@@ -10,9 +10,9 @@ var jsesc = require('jsesc');
  * "constants"
  */
 
-var TEMPLATE_HEADER = "angular.module('<%= module %>'<%= standalone %>).run(['$templateCache', function($templateCache) {";
-var TEMPLATE_BODY = "$templateCache.put('<%= url %>','<%= contents %>'); ";
-var TEMPLATE_FOOTER = "}]);";
+var TEMPLATE_HEADER = 'angular.module(\'<%= module %>\'<%= standalone %>).run([\'$templateCache\', function($templateCache) {';
+var TEMPLATE_BODY = '$templateCache.put(\'<%= url %>\',\'<%= contents %>\');';
+var TEMPLATE_FOOTER = '}]);';
 
 var DEFAULT_FILENAME = 'templates.js';
 var DEFAULT_MODULE = 'templates';

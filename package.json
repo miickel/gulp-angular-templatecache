@@ -34,7 +34,7 @@
     "gulp-util": "3.x",
     "js-string-escape": "~1.0.0",
     "gulp-footer": "1.x",
-    "gulp-header": "1.x",
+    "gulp-header": "1.8.2",
     "gulp-concat": "2.x"
   },
   "devDependencies": {

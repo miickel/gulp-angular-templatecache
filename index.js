@@ -4,14 +4,14 @@ var gutil = require('gulp-util');
 var concat = require('gulp-concat');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
-var htmlJsStr = require('js-string-escape');
+var jsesc = require('jsesc');
 
 /**
  * "constants"
  */
 
-var TEMPLATE_HEADER = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
-var TEMPLATE_BODY = '$templateCache.put("<%= url %>","<%= contents %>");';
+var TEMPLATE_HEADER = 'angular.module(\'<%= module %>\'<%= standalone %>).run([\'$templateCache\', function($templateCache) {';
+var TEMPLATE_BODY = '$templateCache.put(\'<%= url %>\',\'<%= contents %>\');';
 var TEMPLATE_FOOTER = '}]);';
 
 var DEFAULT_FILENAME = 'templates.js';
@@ -86,7 +86,7 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
 
     file.contents = new Buffer(gutil.template(template, {
       url: url,
-      contents: htmlJsStr(file.contents),
+      contents: jsesc(file.contents.toString('utf8')),
       file: file
     }));
 

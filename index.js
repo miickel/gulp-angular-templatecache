@@ -12,7 +12,7 @@ var htmlJsStr = require('js-string-escape');
 
 var TEMPLATE_HEADER = 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {';
 var TEMPLATE_BODY = '$templateCache.put("<%= url %>","<%= contents %>");';
-var TEMPLATE_FOOTER = '}]);';
+var TEMPLATE_FOOTER = '}]);\n';
 
 var DEFAULT_FILENAME = 'templates.js';
 var DEFAULT_MODULE = 'templates';
@@ -20,20 +20,22 @@ var MODULE_TEMPLATES = {
 
   requirejs: {
     header: 'define([\'angular\'], function(angular) { \'use strict\'; return ',
-    footer: '});'
+    footer: '});\n'
   },
 
   browserify: {
-    header: '\'use strict\'; module.exports = '
+    header: '\'use strict\'; module.exports = ',
+    footer: '\n'
   },
 
   es6: {
     header: 'import angular from \'angular\'; export default ',
+    footer: '\n'
   },
 
   iife: {
     header: '(function(){',
-    footer: '})();'
+    footer: '})();\n'
   }
 
 };

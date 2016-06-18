@@ -30,11 +30,11 @@
   "license": "MIT",
   "dependencies": {
     "event-stream": "3.3.2",
-    "gulp-util": "3.0.7",
-    "js-string-escape": "1.0.1",
+    "gulp-concat": "2.6.0",
     "gulp-footer": "1.0.5",
     "gulp-header": "1.8.2",
-    "gulp-concat": "2.6.0"
+    "gulp-util": "3.0.7",
+    "jsesc": "2.2.0"
   },
   "devDependencies": {
     "mocha": "latest"

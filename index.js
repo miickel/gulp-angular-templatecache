@@ -61,7 +61,7 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
     if (typeof base === 'function') {
       url = path.join(root, base(file));
     } else {
-      url = path.join(root, file.path.replace(base || file.base, ''));
+      url = path.join(root, file.path.replace(path.normalize(base) || file.base, ''));
     }
 
     if (root === '.' || root.indexOf('./') === 0) {

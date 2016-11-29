@@ -52,6 +52,13 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
     var template = templateBody || TEMPLATE_BODY;
     var url;
 
+    if (file.processedByTemplateCache) {
+        /* Object has already been processed, probably returned by gulp-remember.
+        */
+        callback(null, file);
+        return
+    }
+    file.processedByTemplateCache = true
     file.path = path.normalize(file.path);
 
     /**

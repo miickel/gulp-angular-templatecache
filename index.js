@@ -132,8 +132,8 @@ function wrapInModule(moduleSystem) {
   }
 
   return es.pipeline(
-    header(moduleTemplate.header || ''),
-    footer(moduleTemplate.footer || '')
+    header(moduleTemplate.header || '', {}),
+    footer(moduleTemplate.footer || '', {})
   );
 
 }

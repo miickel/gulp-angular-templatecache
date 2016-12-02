@@ -69,6 +69,19 @@ __Note:__ if you use Visual Studio on Windows, you might encounter this error me
 
 This is most likely due to long path names, and can be fixed by adding `lodash.bind` as a dev dependecy in your package.json. Anyway, if you encounter this error, please drop a note in #62, and we might merge #63.
 
+__Note:__ following snippet shows how we can use base option to set template name using original file name.
+
+```js
+var path = require('path');
+
+...
+.pipe(templateCache(
+	{ base: function(file) {
+		return path.basename(file.path) }
+	}))
+...
+```
+
 
 ## API
 

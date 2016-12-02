@@ -439,5 +439,21 @@ describe('gulp-angular-templatecache', function () {
 
   });
 
+  describe('error', function () {
+
+    it('should not error if there is no file', function (cb) {
+      var stream = templateCache('templates.js', {
+        templateBody: '$templateCache.put(\'<%= url %>\',\'<%= contents %>\');',
+      });
+
+      stream.on('data', function (file) {
+        cb();
+      });
+
+      stream.end();
+    });
+
+  });
+
 
 });

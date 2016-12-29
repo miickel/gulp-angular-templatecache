@@ -136,6 +136,10 @@ var TEMPLATE_BODY = '$templateCache.put("<%= url %>","<%= contents %>");';
 var TEMPLATE_FOOTER = '}]);';
 ```
 
+#### escapeOptions - {object}
+
+> Options for jsesc module. See [jsesc API](https://www.npmjs.com/package/jsesc#api)
+
 
 ## Changes
 

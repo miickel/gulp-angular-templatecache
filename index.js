@@ -10,7 +10,7 @@ var jsesc = require('jsesc');
  * "constants"
  */
 
-var TEMPLATE_HEADER = 'angular.module(\'<%= module %>\'<%= standalone %>).run([\'$templateCache\', function($templateCache) {';
+var TEMPLATE_HEADER = 'angular.module(\'<%= module %>\'<%= standalone %>, []).run([\'$templateCache\', function($templateCache) {';
 var TEMPLATE_BODY = '$templateCache.put(\'<%= url %>\',\'<%= contents %>\');';
 var TEMPLATE_FOOTER = '}]);';
 

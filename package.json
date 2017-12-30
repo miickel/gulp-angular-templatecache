@@ -33,10 +33,12 @@
     "gulp-concat": "2.6.0",
     "gulp-footer": "1.0.5",
     "gulp-header": "1.8.2",
-    "gulp-util": "3.0.7",
-    "jsesc": "2.2.0"
+    "jsesc": "2.2.0",
+    "lodash.template": "^4.4.0",
+    "through2": "^2.0.3"
   },
   "devDependencies": {
-    "mocha": "latest"
+    "mocha": "latest",
+    "vinyl": "^2.1.0"
   }
 }

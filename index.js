@@ -1,6 +1,7 @@
 var es = require('event-stream');
 var path = require('path');
-var gutil = require('gulp-util');
+var through2 = require('through2');
+var lodashTemplate = require('lodash.template');
 var concat = require('gulp-concat');
 var header = require('gulp-header');
 var footer = require('gulp-footer');
@@ -84,7 +85,7 @@ function templateCacheFiles(root, base, templateBody, transformUrl) {
      * Create buffer
      */
 
-    file.contents = new Buffer(gutil.template(template, {
+    file.contents = new Buffer(lodashTemplate(template)({
       url: url,
       contents: jsesc(file.contents.toString('utf8')),
       file: file
@@ -128,7 +129,7 @@ function wrapInModule(moduleSystem) {
   var moduleTemplate = MODULE_TEMPLATES[moduleSystem];
 
   if (!moduleTemplate) {
-    return gutil.noop();
+    return through2.obj();
   }
 
   return es.pipeline(

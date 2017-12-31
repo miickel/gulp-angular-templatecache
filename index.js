@@ -160,6 +160,14 @@ function templateCache(filename, options) {
   }
 
   /**
+   * Look for concat override
+   */
+   
+  if (options.concat && typeof options.concat === "function") {
+    concat = options.concat;
+  }
+  
+  /**
    * Normalize moduleSystem option
    */
 

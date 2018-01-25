@@ -1,6 +1,6 @@
 {
   "name": "gulp-angular-templatecache",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Concatenates and registers AngularJS templates in the $templateCache.",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,7 @@
   "dependencies": {
     "event-stream": "3.3.4",
     "gulp-concat": "2.6.1",
-    "gulp-footer": "1.0.5",
+    "gulp-footer": "2.0.1",
     "gulp-header": "1.8.9",
     "jsesc": "2.5.1",
     "lodash.template": "^4.4.0",

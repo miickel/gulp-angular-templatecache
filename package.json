@@ -27,6 +27,9 @@
     "email": "andersson.mickel@gmail.com",
     "url": "http://mickel.me"
   },
+  "contributors": [
+    "Simon Kurtz <simonkurtz@gmail.com> (https://github.com/simonua)"
+  ],
   "license": "MIT",
   "dependencies": {
     "event-stream": "3.3.4",

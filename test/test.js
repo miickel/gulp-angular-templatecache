@@ -412,6 +412,27 @@ describe('gulp-angular-templatecache', function () {
       stream.end();
     });
 
+    it('should accept empty strings as header and footer', function (cb) {
+      var stream = templateCache('templates.js', {
+        templateHeader: '',
+        templateFooter: ''
+      });
+
+      stream.on('data', function (file) { assert
+        assert.equal(file.path, path.normalize(__dirname + '/templates.js'));
+        assert.equal(file.relative, 'templates.js');
+        assert.equal(file.contents.toString('utf8'), '$templateCache.put(\'/template-a.html\',\'yoo\');');
+        cb();
+      });
+
+      stream.write(new Vinyl({
+        base: __dirname,
+        path: __dirname + '/template-a.html',
+        contents: new Buffer('yoo')
+      }));
+
+      stream.end();
+    });
   });
 
   describe('options.templateBody', function () {

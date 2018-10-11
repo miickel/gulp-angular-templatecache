@@ -171,8 +171,8 @@ function templateCache(filename, options) {
    * Prepare header / footer
    */
 
-  var templateHeader = options.templateHeader || TEMPLATE_HEADER;
-  var templateFooter = options.templateFooter || TEMPLATE_FOOTER;
+  var templateHeader = 'templateHeader' in options ? options.templateHeader : TEMPLATE_HEADER;
+  var templateFooter = 'templateFooter' in options ? options.templateFooter : TEMPLATE_FOOTER;
 
   /**
    * Build templateCache

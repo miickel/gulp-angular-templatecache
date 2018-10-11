@@ -28,7 +28,8 @@
     "url": "http://mickel.me"
   },
   "contributors": [
-    "Simon Kurtz <simonkurtz@gmail.com> (https://github.com/simonua)"
+    "Simon Kurtz <simonkurtz@gmail.com> (https://github.com/simonua)",
+    "Andrew Nichols <tandrewnichols@gmail.com> (https://github.com/tandrewnichols)"
   ],
   "license": "MIT",
   "dependencies": {

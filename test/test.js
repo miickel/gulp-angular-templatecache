@@ -386,6 +386,27 @@ describe('gulp-angular-templatecache', function () {
       stream.end();
     });
 
+    it('should support IIFE-style exports', function (cb) {
+      var stream = templateCache('templates.js', {
+        moduleSystem: 'IIFE'
+      });
+
+      stream.on('data', function (file) {
+        assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
+        assert.equal(file.relative, 'templates.js');
+        assert.equal(file.contents.toString('utf8'), '(function(){\'use strict\';angular.module(\'templates\').run([\'$templateCache\', function($templateCache) {$templateCache.put(\'/template-a.html\',\'<h1 id="template-a">I\\\'m template A!</h1>\');}]);})();');
+        cb();
+      });
+
+      stream.write(new Vinyl({
+        base: __dirname,
+        path: __dirname + '/template-a.html',
+        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+      }));
+
+      stream.end();
+    });
+
   });
 
   describe('options.templateHeader & options.templateFooter', function () {

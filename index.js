@@ -33,7 +33,7 @@ var MODULE_TEMPLATES = {
   },
 
   iife: {
-    header: '(function(){',
+    header: '(function(){\'use strict\';',
     footer: '})();'
   }
 

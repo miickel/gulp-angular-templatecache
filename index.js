@@ -62,12 +62,7 @@ function templateCacheFiles(root, base, templateBody, transformUrl, escapeOption
     if (typeof base === 'function') {
       url = path.join(root, base(file));
     } else {
-      if (base === undefined) {
-        // Make sure file.base ends in a separator, to ensure correct relative
-        // path construction (provides compatibility with Gulp 4/Vinyl 2)
-        base = file.base += file.base.substr(-1) === path.sep ? "" : path.sep;
-      }
-      url = path.join(root, file.path.replace(base, ''));
+      url = path.join(root, file.path.replace(base || file.base, ''));
     }
 
     if (root === '.' || root.indexOf('./') === 0) {

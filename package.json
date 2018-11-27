@@ -34,12 +34,13 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "event-stream": "3.3.4",
     "gulp-concat": "2.6.1",
     "gulp-footer": "2.0.1",
     "gulp-header": "2.0.5",
     "jsesc": "2.5.1",
     "lodash.template": "^4.4.0",
+    "map-stream": "0.0.7",
+    "stream-combiner": "^0.2.2",
     "through2": "^2.0.3"
   },
   "devDependencies": {

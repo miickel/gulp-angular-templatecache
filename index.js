@@ -1,4 +1,5 @@
-var es = require('event-stream');
+var mapStream = require('map-stream');
+var streamCombiner = require('stream-combiner');
 var path = require('path');
 var through2 = require('through2');
 var lodashTemplate = require('lodash.template');
@@ -117,7 +118,7 @@ function templateCacheStream(root, base, templateBody, transformUrl, escapeOptio
    * templateCache files
    */
 
-  return es.map(templateCacheFiles(root, base, templateBody, transformUrl, escapeOptions));
+  return mapStream(templateCacheFiles(root, base, templateBody, transformUrl, escapeOptions));
 
 }
 
@@ -132,7 +133,7 @@ function wrapInModule(moduleSystem) {
     return through2.obj();
   }
 
-  return es.pipeline(
+  return streamCombiner(
     header(moduleTemplate.header || ''),
     footer(moduleTemplate.footer || '')
   );
@@ -178,7 +179,7 @@ function templateCache(filename, options) {
    * Build templateCache
    */
 
-  return es.pipeline(
+  return streamCombiner(
     templateCacheStream(options.root || '', options.base, options.templateBody, options.transformUrl, options.escapeOptions || {}),
     concat(filename),
     header(templateHeader, {

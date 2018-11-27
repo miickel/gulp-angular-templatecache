@@ -34,7 +34,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "event-stream": "3.3.4",
+    "event-stream": "^4.0.1",
     "gulp-concat": "2.6.1",
     "gulp-footer": "2.0.1",
     "gulp-header": "2.0.5",

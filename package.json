@@ -30,7 +30,8 @@
   "contributors": [
     "Simon Kurtz <simonkurtz@gmail.com> (https://github.com/simonua)",
     "Andrew Nichols <tandrewnichols@gmail.com> (https://github.com/tandrewnichols)",
-    "Donny Mellstrom (https://github.com/dmellstrom)"
+    "Donny Mellstrom (https://github.com/dmellstrom)",
+    "Basa (https://github.com/Basa0)"
   ],
   "license": "MIT",
   "dependencies": {

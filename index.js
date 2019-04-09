@@ -51,6 +51,10 @@ function templateCacheFiles(root, base, templateBody, transformUrl, escapeOption
       return callback(null, file);
     }
 
+    if (file.stat && file.stat.isDirectory()) {
+      return callback(null, file);
+    }
+
     var template = templateBody || TEMPLATE_BODY;
     var url;
 

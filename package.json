@@ -44,7 +44,7 @@
     "lodash.template": "^4.4.0",
     "map-stream": "0.0.7",
     "stream-combiner": "0.2.2",
-    "through2": "^2.0.3"
+    "through2": "^3.0.1"
   },
   "devDependencies": {
     "mocha": "latest",

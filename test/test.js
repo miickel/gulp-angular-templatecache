@@ -53,6 +53,34 @@ describe('gulp-angular-templatecache', function () {
     stream.end();
   });
 
+  it('should ignore directories', function (cb) {
+    var stream = templateCache();
+
+    stream.on('data', function (file) {
+      assert.equal(path.normalize(file.path), path.normalize(__dirname + '/templates.js'));
+      assert.equal(file.relative, 'templates.js');
+      assert.equal(file.contents.toString('utf8'), 'angular.module(\'templates\').run([\'$templateCache\', function($templateCache) {$templateCache.put(\'/directory/template-a.html\',\'<h1 id="template-a">I\\\'m template A!</h1>\');}]);');
+      cb();
+    });
+
+    stream.write(new Vinyl({
+      base: __dirname,
+      path: __dirname + '/directory',
+      contents: null,
+      stat: {
+        isDirectory: () => true
+      }
+    }));
+
+    stream.write(new Vinyl({
+      base: __dirname,
+      path: __dirname + '/directory/template-a.html',
+      contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+    }));
+
+    stream.end();
+  });
+
 
   describe('options.root', function () {
 

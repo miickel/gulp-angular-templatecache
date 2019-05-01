@@ -19,13 +19,13 @@ describe('gulp-angular-templatecache', function () {
     stream.write(new Vinyl({
       base: __dirname,
       path: __dirname + '/template-a.html',
-      contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+      contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
     }));
 
     stream.write(new Vinyl({
       base: __dirname,
       path: __dirname + '/template-b.html',
-      contents: new Buffer('<h1 id="template-b">I\'m template B!</h1>')
+      contents: Buffer.from('<h1 id="template-b">I\'m template B!</h1>')
     }));
 
     stream.end();
@@ -47,7 +47,7 @@ describe('gulp-angular-templatecache', function () {
     stream.write(new Vinyl({
       base: __dirname,
       path: __dirname + '/template-a.html',
-      contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+      contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
     }));
 
     stream.end();
@@ -75,7 +75,7 @@ describe('gulp-angular-templatecache', function () {
     stream.write(new Vinyl({
       base: __dirname,
       path: __dirname + '/directory/template-a.html',
-      contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+      contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
     }));
 
     stream.end();
@@ -99,7 +99,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -120,7 +120,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -141,7 +141,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -162,7 +162,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -190,7 +190,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -214,7 +214,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -240,7 +240,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -263,7 +263,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -286,7 +286,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -314,7 +314,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -339,7 +339,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -366,7 +366,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -387,7 +387,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -408,7 +408,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -429,7 +429,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('<h1 id="template-a">I\'m template A!</h1>')
+        contents: Buffer.from('<h1 id="template-a">I\'m template A!</h1>')
       }));
 
       stream.end();
@@ -455,7 +455,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('yoo')
+        contents: Buffer.from('yoo')
       }));
 
       stream.end();
@@ -477,7 +477,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('yoo')
+        contents: Buffer.from('yoo')
       }));
 
       stream.end();
@@ -501,7 +501,7 @@ describe('gulp-angular-templatecache', function () {
       stream.write(new Vinyl({
         base: __dirname,
         path: __dirname + '/template-a.html',
-        contents: new Buffer('yoo')
+        contents: Buffer.from('yoo')
       }));
 
       stream.end();

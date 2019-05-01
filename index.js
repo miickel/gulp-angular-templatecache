@@ -90,7 +90,7 @@ function templateCacheFiles(root, base, templateBody, transformUrl, escapeOption
      * Create buffer
      */
 
-    file.contents = new Buffer(lodashTemplate(template)({
+    file.contents = Buffer.from(lodashTemplate(template)({
       url: url,
       contents: jsesc(file.contents.toString('utf8'), escapeOptions),
       file: file

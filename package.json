@@ -38,7 +38,7 @@
   "license": "MIT",
   "dependencies": {
     "gulp-concat": "2.6.1",
-    "gulp-footer": "2.0.2",
+    "gulp-footer": "2.1.0",
     "gulp-header": "2.0.7",
     "jsesc": "2.5.2",
     "lodash.template": "^4.4.0",

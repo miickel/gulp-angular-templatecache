@@ -1,5 +1,9 @@
 # gulp-angular-templatecache
 
+## The [npm package](https://www.npmjs.com/package/gulp-angular-templatecache) related to this repo was deprecated after v3.0.1 was published on 02/17/22. Ownership has been responsibly transferred to npm.
+
+---
+
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://npmjs.org/package/gulp-angular-templatecache)
 [![NPM version](http://img.shields.io/npm/v/gulp-angular-templatecache.svg?style=flat)](https://npmjs.org/package/gulp-angular-templatecache)
 [![NPM version](http://img.shields.io/npm/dm/gulp-angular-templatecache.svg?style=flat)](https://npmjs.org/package/gulp-angular-templatecache)
